@@ -80,11 +80,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##使用bootstrap-treeview插件实现灵活配置快递模板</p>
-<hr>
-<p>######开发条件：<br>安装bootstrap-treeview插件，具体操作见：<br><a href="http://www.bootcdn.cn/bootstrap-treeview/readme/" target="_blank" rel="external">bootstrap-treeview</a></p>
-<p>######实现功能：</p>
-<blockquote>
+        <h2 id="使用bootstrap-treeview插件实现灵活配置快递模板"><a href="#使用bootstrap-treeview插件实现灵活配置快递模板" class="headerlink" title="使用bootstrap-treeview插件实现灵活配置快递模板"></a>使用bootstrap-treeview插件实现灵活配置快递模板</h2><hr>
+<h6 id="开发条件："><a href="#开发条件：" class="headerlink" title="开发条件："></a>开发条件：</h6><p>安装bootstrap-treeview插件，具体操作见：<br><a href="http://www.bootcdn.cn/bootstrap-treeview/readme/" target="_blank" rel="external">bootstrap-treeview</a></p>
+<h6 id="实现功能："><a href="#实现功能：" class="headerlink" title="实现功能："></a>实现功能：</h6><blockquote>
 <p>1.一个模板可指定子模板（包含多个地区、价格等）<br>2.编辑子模板地区时，动态改变tree的地区（其他子模板选中的地区disabled,此模板之前选中的地区默认选中）<br>3.tree选择时，父级和子集的联动（如父级选中子集全部选中，取消一个子集的时候，父级也取消）<br>4.维护子模板数据（展示选中的地区格式 如（安徽、北京（昌平 回龙观）） 存储选中节点）</p>
 </blockquote>
 <p>其他说明</p>
@@ -101,13 +99,11 @@
 <p><code>var templates = [];</code>    //保存最终储存的数据<br><code>var selectedNodeId = [];</code>    //用来存储单个模板选择的nodeId 用于展示<br><code>var editingTemplate = null;</code>    //用于标记正在处理的是第几个地区模板<br><code>var selectedAreaId = [];</code>   //保存当前选择的地区<br><code>var selectedAreaName = [];</code> //保存当前选中的地区名称用于展示<br><code>var defaultData = [];</code>//数据源</p>
 </blockquote>
 <hr>
-<p>######实现功能一</p>
-<blockquote>
+<h6 id="实现功能一"><a href="#实现功能一" class="headerlink" title="实现功能一"></a>实现功能一</h6><blockquote>
 <p>一个模板指定多个子模板<br>主要是维护templates[]数组 push进入多个template即可 下面会详细讲解如何维护template</p>
 </blockquote>
 <hr>
-<p>######实现功能二（动态修改tree） </p>
-<blockquote>
+<h6 id="实现功能二（动态修改tree）"><a href="#实现功能二（动态修改tree）" class="headerlink" title="实现功能二（动态修改tree）"></a>实现功能二（动态修改tree）</h6><blockquote>
 <p>原理：通过维护的templates和editingTemplate 拿到当前编辑的子模板数据和其他子模板数据，将当前模板的node默认选中，其他的数据置为disabled</p>
 </blockquote>
 <p>编辑子模板</p>
@@ -115,7 +111,7 @@
 <p>uncheckAll方法：<code>$(&#39;#tree&#39;).treeview(&#39;uncheckAll&#39;, { silent: true });</code><br>disAbled方法：<code>$(&#39;#tree&#39;).treeview(&#39;disableNode&#39;, [ nodeId, { silent: true } ]);</code><br>默认选中的方法<code>$(&#39;#tree&#39;).treeview(&#39;checkNode&#39;, [ template.nodeIds[i], { silent: true } ]);</code></p>
 </blockquote>
 <hr>
-<p>######实现功能三：父级和子级的联动（主要操作在点击选中和取消选中上面 来分析两种情况）<br>第一种 选中</p>
+<h6 id="实现功能三：父级和子级的联动（主要操作在点击选中和取消选中上面-来分析两种情况）"><a href="#实现功能三：父级和子级的联动（主要操作在点击选中和取消选中上面-来分析两种情况）" class="headerlink" title="实现功能三：父级和子级的联动（主要操作在点击选中和取消选中上面 来分析两种情况）"></a>实现功能三：父级和子级的联动（主要操作在点击选中和取消选中上面 来分析两种情况）</h6><p>第一种 选中</p>
 <blockquote>
 <p>1.选择父节点 将子节点全部选中<br>根据父节点返回的nodes得到所有的子节点 并且将子节点全部选中<br>选中的方法<code>$(&#39;#tree&#39;).treeview(&#39;checkNode&#39;, [ nodeId, { silent: true } ]);</code><br>可以封装为一个方法selectAllChildren()</p>
 <p>2.如果选中的为子节点<br>判断父节点中的子节点是否全部选中如果全部选中则将父节点选中</p>
@@ -130,8 +126,7 @@
 <p><code>$(&#39;#tree&#39;).treeview(&#39;selectNode&#39;, [ nodeId, { silent: true } ]);</code><br>根据获取到元素获取是否选中</p>
 </blockquote>
 <hr>
-<p>######实现功能四（维护template数据）</p>
-<blockquote>
+<h6 id="实现功能四（维护template数据）"><a href="#实现功能四（维护template数据）" class="headerlink" title="实现功能四（维护template数据）"></a>实现功能四（维护template数据）</h6><blockquote>
 <p>1.正在编辑的editingTemplate<br>2.当前层级选中的所有selectedNodeId<br>3.展示需要的字符串数组selectedNodeName<br>3.存储字符串数组selectedAreaId对应数据库中的areaId<br>4.将上面的三个数组存入template，并将template push进入templates</p>
 </blockquote>
 <p>逻辑</p>
@@ -139,17 +134,16 @@
 <p>1.获取到所有的被选中的元素<br>2.遍历所有的元素 判断当前节点是否有nodes（即子元素），如果有则直接操作，并改变index，将其子元素全部跳过，将节点名称保存进areaNames，如”安徽”<br>3.遍历所有的元素 如果没有子元素，取出父级元素如”北京(“,将node元素添加至后面，如”北京(昌平区”,判断下一个元素的父节点是否发生改变，如果发生改变则结束维护字符串为”北京（昌平区）”，并将其添加至areaNames，继续遍历下一个节点<br>4.其他三个数组在遍历的同时维护</p>
 </blockquote>
 <hr>
-<p>######实现结果展示：<br>1.主页面展示：<br><img src="http://upload-images.jianshu.io/upload_images/1329783-9384c647d523f55c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="主页面"><br>2.tree展示：<br><img src="http://upload-images.jianshu.io/upload_images/1329783-e791fb21521652f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/540" alt="选择地区.png"></p>
+<h6 id="实现结果展示："><a href="#实现结果展示：" class="headerlink" title="实现结果展示："></a>实现结果展示：</h6><p>1.主页面展示：<br><img src="http://upload-images.jianshu.io/upload_images/1329783-9384c647d523f55c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="主页面"><br>2.tree展示：<br><img src="http://upload-images.jianshu.io/upload_images/1329783-e791fb21521652f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/540" alt="选择地区.png"></p>
 <hr>
-<p>######小结</p>
-<blockquote>
+<h6 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h6><blockquote>
 <p>本文提供简单的实现方案思路，具体的代码根据业务实现，不足之处不能动态处理数据源，优点bootstrap开放的api接口较多，可自定义实现。</p>
 </blockquote>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://SeeMoonUp.github.io/2017/01/19/快递模板/" data-id="ciy36wews00018strnytkvebe" class="article-share-link">Share</a>
+      <a data-url="http://SeeMoonUp.github.io/2017/01/19/快递模板/" data-id="ciy3rnsn6000184trj0gg6lf4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -194,7 +188,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://SeeMoonUp.github.io/2017/01/19/hello-world/" data-id="ciy36wewl00008str4g73hyxe" class="article-share-link">Share</a>
+      <a data-url="http://SeeMoonUp.github.io/2017/01/19/hello-world/" data-id="ciy3rnsmw000084tr9hyb6nl2" class="article-share-link">Share</a>
       
       
     </footer>
