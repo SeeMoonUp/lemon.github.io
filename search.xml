@@ -5,6 +5,24 @@
     
     <entry>
       <title><![CDATA[mysql sum 返回为null]]></title>
+      <url>http://SeeMoonUp.github.io/2017/01/22/mysql/sumReturn/</url>
+      <content type="html"><![CDATA[<h5 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h5><ol>
+<li>使用mysql进行sum求和</li>
+<li>java使用int类型来接收</li>
+<li>当sum()where条件后没有满足的数据，返回null</li>
+<li>java转换为int的时候 报错如下：<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">org.apache.ibatis.binding.BindingException: Mapper method 'getShopTotalUseProfit' (interface cc.laowantong.dao.mapper.MallOrderMapper) attempted to return null from a method with a primitive return type (int).</div><div class="line">	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:42)</div><div class="line">	at com.sun.proxy.$Proxy78.getShopTotalUseProfit(Unknown Source)</div><div class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</div><div class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)</div><div class="line">	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</div><div class="line">	at java.lang.reflect.Method.invoke(Method.java:498)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h5 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h5><ol>
+<li>使用函数coalesce(arg1,arg2,…)</li>
+<li>函数解释：返回参数中第一个非空的参数</li>
+<li>最终的sql为： <code>SELECT COALESCE(SUM(total),0)  FROM test_table</code></li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[mysql sum 返回为null]]></title>
       <url>http://SeeMoonUp.github.io/2017/01/21/mysql/sumReturnNull/</url>
       <content type="html"><![CDATA[<h5 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h5><ol>
 <li>使用mysql进行sum求和</li>
