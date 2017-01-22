@@ -296,6 +296,15 @@
 
     <!-- Qrcode -->
     
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+            <i class="material-icons" role="presentation">devices other</i>
+            <span class="visuallyhidden">devices other</span>
+        </button>
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+            <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC0UlEQVR42u3aMXIjMQwEQP3/03Z6wUkaACvXCuyNVLbMZTOBOcDj58jngY2NjY2NjY2NjX1L9iN+ni73z2+ffY62VXxLdc/Y2NjYu9mTDSXbev2dZOXqgWJjY2Ofyc63e1XpquJ7e8bGxsbGzgvP02tAvObrFbCxsbGxry1gr0nViCp5CzY2Njb2PFRKSleV2jvWP83SsLGxsW/Pzjd9n89/2t/GxsbGvjG7+rw+jvzn1UtOdQDoPzvHxsbGXsrOC0MeJOVN3PnbC0Oi2NjY2KvZvS32WrnVBkDeJHjzt9jY2NhL2de2Zpst2Hh8p1rYsLGxsU9gf2JDvZZwHmNVyy02Njb2CexJfNNrweaHkpfDUX8bGxsb+2vZyaViUpAm60z2UwiVsLGxsVew3/wTH2+iWuqqF57epQgbGxt7NzuJgXqjNklIlPx8sjdsbGzsE9h5KJ80dOdFrrdCdHDY2NjYB7Dz4L7aGJgUnl44hY2NjX0auzeaMylIvVBpdNXBxsbGXspOXt8LmJLQaj4AVCh42NjY2EvZvYCpel2pFp48VCoUNmxsbOwD2HmrtRfoJyVqXiaxsbGxT2ZXG7dJTN8b0OnFW6OrCDY2NvaXs6vt2PxaMo+HkpKJjY2NfTJ7MnaTXAl6gzgfH77ExsbGXsfugZPIvnrE1b8tHDE2Njb2avYkHsqjqOaoTXw0bw4FGxsb+wB2L7jPAb2C9/GZU2xsbOxF7GSwphf954OVvTUvq9vY2NjYX8iuPtVAJw+Dqq2C/DvY2NjYu9kXF4li2bvqc7RnbGxs7NXspGjlBSkPnqrv6rUlsLGxsc9hJ8H9hHpVFJUULWxsbGzs/F//SVN20oSohlzY2NjY2JMofxJLJVemUaiEjY2NvYidBD2T6D9feRIelQsYNjY29gp2NaypRv/VkhaN4FSb09jY2NhL2ec82NjY2NjY2NjY2Ld5fgGmi6S32tFkkQAAAABJRU5ErkJggg==">
+        </ul>
+    
 
     <!-- Tags (bookmark) -->
     
@@ -305,7 +314,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        
+        <a class="post_tag-link" href="/tags/mysql/">mysql</a>
     </ul>
     
 
@@ -396,6 +405,30 @@
                 <!-- Post Comments -->
                 
                     
+    <!-- 使用多说评论 -->
+    <link rel="stylesheet" href="/css/duoshuo.min.css">
+<style>
+    #ds-thread #ds-reset .ds-post-button{
+        background-color: #0097A7 !important;
+    }
+    #ds-wrapper #ds-reset .ds-icons-32{
+        background-color: #0097A7 !important;
+    }
+    #ds-reset .ds-highlight {
+        color: #0097A7 !important;
+    }
+</style>
+<div id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread"
+        data-thread-key=""
+        data-url="http://SeeMoonUp.github.io/2017/01/21/mysql/sumReturnNull/"
+        data-title="mysql sum 返回为null">
+    </div>
+    <!-- 多说评论框 end -->
+</div>
+
+
 
 
 
@@ -725,6 +758,23 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 
+    <!-- 多说公共 js 代码 start -->
+    <script type="text/javascript">
+        var duoshuoQuery = {
+            short_name: 'seemoonup'
+        };
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';
+            ds.async = true;
+            ds.src = 'https://static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0]
+             || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <!-- 多说公共 js 代码 end -->
+
 
 
 
@@ -733,6 +783,106 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 <!-- Local Search-->
+
+    <script>
+    var searchFunc = function(path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: 'xml',
+            success: function( xmlResponse ) {
+                // get the contents from search data
+                var datas = $( 'entry', xmlResponse ).map(function() {
+                    return {
+                        title: $( 'title', this ).text(),
+                        content: $('content',this).text(),
+                        url: $( 'url' , this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function() {
+                    var str='<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function(data) {
+                        var isMatch = true;
+                        var content_index = [];
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                        var data_url = data.url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if(data_title != '' && data_content != '') {
+                            keywords.forEach(function(keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if( index_title < 0 && index_content < 0 ) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += '<li><a href="'+ data_url +'" class="search-result-title" target="_blank">'+ data_title;
+                            var content = data.content.trim().replace(/<[^>]+>/g, '');
+                            if (first_occur >= 0) {
+                                // cut out characters
+                                var start = first_occur - 6;
+                                var end = first_occur + 6;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 10;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function(keyword) {
+                                    var regS = new RegExp(keyword, 'gi');
+                                    match_content = match_content.replace(regS, '<em class="search-keyword">'+keyword+'</em>');
+                                })
+                                str += '<p class="search-result">' + match_content +'...</p>' +'</a>';
+                            }
+                        }
+                    });
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    }
+</script>
+
+
+    <script>
+        var inputArea = document.querySelector('#search');
+        var getSearchFile = function() {
+            var path = 'search.xml';
+            searchFunc(path, 'search', 'local-search-result');
+        }
+
+        if(inputArea) {
+            inputArea.onfocus = function() {
+                getSearchFile();
+            }
+        }
+    </script>
 
 
 <!-- Window Load-->
