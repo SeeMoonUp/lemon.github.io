@@ -10,7 +10,7 @@
     
     <title>
         
-            mysql sum 返回为null | 
+            jstl el js灵活使用（三种方案处理页面逻辑） | 
         
         lemon blog
     </title>
@@ -48,7 +48,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://SeeMoonUp.github.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="mysql sum 返回为null | lemon blog">
+    <meta property="og:title" content="jstl el js灵活使用（三种方案处理页面逻辑） | lemon blog">
     <meta property="og:description" content="website java lemon">
 
     <!--[if lte IE 9]>
@@ -226,7 +226,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#问题描述："><span class="post-toc-number">1.</span> <span class="post-toc-text">问题描述：</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#解决方案："><span class="post-toc-number">2.</span> <span class="post-toc-text">解决方案：</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第一种方案：jstl"><span class="post-toc-number">1.</span> <span class="post-toc-text">第一种方案：jstl</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第二种方案：el表达式-三目运算符"><span class="post-toc-number">2.</span> <span class="post-toc-text">第二种方案：el表达式+三目运算符</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第三种方案：将逻辑转移到js文件当中-将videoId传入js中进行处理判断"><span class="post-toc-number">3.</span> <span class="post-toc-text">第三种方案：将逻辑转移到js文件当中 将videoId传入js中进行处理判断**</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -262,7 +262,7 @@
         
     
             <p class="article-headline-p">
-                mysql sum 返回为null
+                jstl el js灵活使用（三种方案处理页面逻辑）
             </p>
         </div>
 
@@ -281,7 +281,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>lemon</strong>
-        <span>1月 21, 2017</span>
+        <span>1月 22, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -302,7 +302,7 @@
         </button>
         <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
             <li class="mdl-menu__item">在其它设备中阅读本文章</li>
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC0UlEQVR42u3aMXIjMQwEQP3/03Z6wUkaACvXCuyNVLbMZTOBOcDj58jngY2NjY2NjY2NjX1L9iN+ni73z2+ffY62VXxLdc/Y2NjYu9mTDSXbev2dZOXqgWJjY2Ofyc63e1XpquJ7e8bGxsbGzgvP02tAvObrFbCxsbGxry1gr0nViCp5CzY2Njb2PFRKSleV2jvWP83SsLGxsW/Pzjd9n89/2t/GxsbGvjG7+rw+jvzn1UtOdQDoPzvHxsbGXsrOC0MeJOVN3PnbC0Oi2NjY2KvZvS32WrnVBkDeJHjzt9jY2NhL2de2Zpst2Hh8p1rYsLGxsU9gf2JDvZZwHmNVyy02Njb2CexJfNNrweaHkpfDUX8bGxsb+2vZyaViUpAm60z2UwiVsLGxsVew3/wTH2+iWuqqF57epQgbGxt7NzuJgXqjNklIlPx8sjdsbGzsE9h5KJ80dOdFrrdCdHDY2NjYB7Dz4L7aGJgUnl44hY2NjX0auzeaMylIvVBpdNXBxsbGXspOXt8LmJLQaj4AVCh42NjY2EvZvYCpel2pFp48VCoUNmxsbOwD2HmrtRfoJyVqXiaxsbGxT2ZXG7dJTN8b0OnFW6OrCDY2NvaXs6vt2PxaMo+HkpKJjY2NfTJ7MnaTXAl6gzgfH77ExsbGXsfugZPIvnrE1b8tHDE2Njb2avYkHsqjqOaoTXw0bw4FGxsb+wB2L7jPAb2C9/GZU2xsbOxF7GSwphf954OVvTUvq9vY2NjYX8iuPtVAJw+Dqq2C/DvY2NjYu9kXF4li2bvqc7RnbGxs7NXspGjlBSkPnqrv6rUlsLGxsc9hJ8H9hHpVFJUULWxsbGzs/F//SVN20oSohlzY2NjY2JMofxJLJVemUaiEjY2NvYidBD2T6D9feRIelQsYNjY29gp2NaypRv/VkhaN4FSb09jY2NhL2ec82NjY2NjY2NjY2Ld5fgGmi6S32tFkkQAAAABJRU5ErkJggg==">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACaklEQVR42u3aQXLCMAwFUO5/6fYAnYYvWRGUvqwYJgl+Xtjiy4+vj74eeHh4eHh4eHh4b8Z7xFf1qZ/3//bsz3uOxoaHh4e3wnuy1F7e00NGS3xrbHh4eHibvGTJvv6cLPTXUzOwneDh4eG9Je+3AfVKYTw8PLz/w7sufPNtAA8PD+/v8pI//NeDTr6vlumrWQseHh5ezKuWv5ufV/t7eHh4eAGvfKTpcrk/uSd5qnzoCg8PD+8GXr4QJ4X4VOBbHQ8eHh7eJi+PGAo/cHzwtDcdeHh4eJu8HrLavqoW3714Fw8PD+9uXr7c50cHqgV38p6jfwx4eHh4o7x8ge6V0dFSXowkyik1Hh4e3igvD2qrRwryWLa3wZRPRuDh4eGN8nrhaTWYyL/vBbh4eHh4m7xqc6u3uFc3iVtiXDw8PLyhBlheIiclb1L+nlCflP54eHh4N/OqgWk1pDgBVOMMPDw8vB1eddDViLYa9SYNtmZJjYeHhzfKy68keshDhPPtJ9oY8PDw8EZ5vfZ8MqDzNlv+PR4eHt4+L1nK86bXyXvOD2bh4eHh7fCmItreZpBMTWFa8fDw8BZ5s4Nutq8ODnLh4eHhvYpXCEyLd+axRe/NeHh4eDu8XgMsb3FVo+FetIGHh4e3yaserko2leuiPB9ucxLx8PDwVnj5sYCTBtXUVA4cusLDw8Mb4iWDzoOJfBKrU3DU38PDw8N7KW/qKFX+htWNAQ8PD2+UVw1tk/cksChoxsPDw1vkJSXv7OCq0cPtMS4eHh7eDQ2wanQbNfuL5Xg5jMDDw8Mb5X3ehYeHh4eHh4eH9wbXNwekPtoNq9vgAAAAAElFTkSuQmCC">
         </ul>
     
 
@@ -314,7 +314,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/mysql/">mysql</a>
+        <a class="post_tag-link" href="/tags/fe/">fe</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/java/">java</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/javascript/">javascript</a>
     </ul>
     
 
@@ -330,7 +330,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=mysql sum 返回为null&url=http://SeeMoonUp.github.io//2017/01/21/mysql/sumReturnNull/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=jstl el js灵活使用（三种方案处理页面逻辑）&url=http://SeeMoonUp.github.io//2017/01/22/java/jstl/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -339,7 +339,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=mysql sum 返回为null&url=http://SeeMoonUp.github.io//2017/01/21/mysql/sumReturnNull/index.html&via=lemon" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=jstl el js灵活使用（三种方案处理页面逻辑）&url=http://SeeMoonUp.github.io//2017/01/22/java/jstl/index.html&via=lemon" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -348,7 +348,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://SeeMoonUp.github.io//2017/01/21/mysql/sumReturnNull/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://SeeMoonUp.github.io//2017/01/22/java/jstl/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -357,7 +357,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://SeeMoonUp.github.io//2017/01/21/mysql/sumReturnNull/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://SeeMoonUp.github.io//2017/01/22/java/jstl/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -381,18 +381,24 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h5 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h5><ol>
-<li>使用mysql进行sum求和</li>
-<li>java使用int类型来接收</li>
-<li>当sum()where条件后没有满足的数据，返回null</li>
-<li>java转换为int的时候 报错如下：<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">org.apache.ibatis.binding.BindingException: Mapper method 'getShopTotalUseProfit' (interface cc.laowantong.dao.mapper.MallOrderMapper) attempted to return null from a method with a primitive return type (int).</div><div class="line">	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:42)</div><div class="line">	at com.sun.proxy.$Proxy78.getShopTotalUseProfit(Unknown Source)</div><div class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</div><div class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)</div><div class="line">	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</div><div class="line">	at java.lang.reflect.Method.invoke(Method.java:498)</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h5 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h5><ol>
-<li>使用函数coalesce(arg1,arg2,…)</li>
-<li>函数解释：返回参数中第一个非空的参数</li>
-<li>最终的sql为： <code>SELECT COALESCE(SUM(total),0)  FROM test_table</code></li>
-</ol>
+        <blockquote>
+<p>场景描述：根据后台传入的值（value是否大于0）决定是否跳转（跳转地址vid-<em>）<br>备注：\</em>为后台传入的value</p>
+</blockquote>
+<hr>
+<p>.解决方案：</p>
+<h4 id="第一种方案：jstl"><a href="#第一种方案：jstl" class="headerlink" title="第一种方案：jstl"></a>第一种方案：jstl</h4><p>使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;c:choose&gt;</div><div class="line">  &lt;c:when test=&quot;$&#123;value &gt; 0&#125;&quot;&gt;</div><div class="line">    &lt;a href=&quot;vid-$&#123;value&#125;&quot; class=&quot;photo&quot; target=&quot;_blank&quot;&gt;</div><div class="line">    href</div><div class="line">    &lt;/a&gt;&lt;/c:when&gt;</div><div class="line">  &lt;c:otherwise&gt;</div><div class="line">    &lt;a href=&quot;javascript:void(0);&quot; class=&quot;photo&quot; target=&quot;_blank&quot;&gt;</div><div class="line">    href</div><div class="line">  &lt;/c:otherwise&gt;</div><div class="line">&lt;/c:choose&gt;</div></pre></td></tr></table></figure></p>
+<p>使用jstl表达式来完成</p>
+<hr>
+<h4 id="第二种方案：el表达式-三目运算符"><a href="#第二种方案：el表达式-三目运算符" class="headerlink" title="第二种方案：el表达式+三目运算符"></a>第二种方案：el表达式+三目运算符</h4><p>很显然使用第一种方式代码很臃肿，代码量太高<br>所以考虑能否使用el表达式中的三目运算符来解决这个问题<br>代码如下<br><code>&lt;a href=&quot;${value &gt; 0 ? &#39;vid-&#39;+value : &#39;&#39;}; &quot;</code></p>
+<p>发现会报错 原因是三目运算符中不支持字符串的加减，只支持数字间的逻辑运算<br>这样就比较尴尬了；</p>
+<hr>
+<h4 id="第三种方案：将逻辑转移到js文件当中-将videoId传入js中进行处理判断"><a href="#第三种方案：将逻辑转移到js文件当中-将videoId传入js中进行处理判断" class="headerlink" title="第三种方案：将逻辑转移到js文件当中 将videoId传入js中进行处理判断**"></a>第三种方案：将逻辑转移到js文件当中 将videoId传入js中进行处理判断**</h4><p>js代码如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function redirectUrl(value)&#123;</div><div class="line">  if(value &gt; 0) &#123;</div><div class="line">    window.location.href = &quot;vid-&quot;+value;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>jsp代码如下<br><code>&lt;a href=&quot;javascript:redirectUrl(${ value}); &quot;</code></p>
+<p>使用这种方案就解决了第二种方法不能够处理的问题</p>
+<blockquote>
+<p>总结：有时候思路转变一下 就会得到一种比较合理的解决方案</p>
+<p>未经作者允许 请勿转载，谢谢 :)</p>
+</blockquote>
 
     
 
@@ -421,9 +427,9 @@
 <div id="comments">
     <!-- 多说评论框 start -->
     <div class="ds-thread"
-        data-thread-key="2017/01/21/mysql/sumReturnNull/"
-        data-url="http://SeeMoonUp.github.io/2017/01/21/mysql/sumReturnNull/"
-        data-title="mysql sum 返回为null">
+        data-thread-key="2017/01/22/java/jstl/"
+        data-url="http://SeeMoonUp.github.io/2017/01/22/java/jstl/"
+        data-title="jstl el js灵活使用（三种方案处理页面逻辑）">
     </div>
     <!-- 多说评论框 end -->
 </div>
@@ -439,7 +445,7 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/01/22/java/jstl/" id="post_nav-newer" class="prev-content">
+        <a href="/2017/01/22/fe/wechatScheme/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -453,7 +459,7 @@
 
     <!-- Next Nav -->
     
-        <a href="/2017/01/21/stone/Qingwen/" id="post_nav-older" class="next-content">
+        <a href="/2017/01/21/mysql/sumReturnNull/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">

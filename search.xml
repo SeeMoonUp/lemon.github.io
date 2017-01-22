@@ -4,6 +4,130 @@
   
     
     <entry>
+      <title><![CDATA[红包秒杀活动]]></title>
+      <url>http://SeeMoonUp.github.io/2017/01/22/java/redpacket/</url>
+      <content type="html"><![CDATA[<p>并发抢红包算法及实现</p>
+<ol>
+<li>如何分配红包</li>
+<li>如何控制抢红包的并发（类似秒杀系统）</li>
+</ol>
+<hr>
+<h4 id="一-如何分配红包"><a href="#一-如何分配红包" class="headerlink" title="一 如何分配红包"></a>一 如何分配红包</h4><p>分配红包的要求：``<br>a. 较为均匀，同时允许出现较大值和较小值<br>b. 不能为0<br>c. 指定红包个数和总量，可以自动分配完全<br>解决方案：</p>
+<ol>
+<li>较为均匀的分布，简单的伪微信红包 缺点 红包金额较为均匀</li>
+<li>使用正态分布来动态实现红包的分布（作者最终采用的方案）<h5 id="第一种方案的简单实现代码"><a href="#第一种方案的简单实现代码" class="headerlink" title="第一种方案的简单实现代码"></a>第一种方案的简单实现代码</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">if(leftPacketAmount == 1)&#123;</div><div class="line">    return leftCoinAmount;</div><div class="line">&#125;</div><div class="line">int max = leftCoinAmount/leftPacketAmount * 2;</div><div class="line">Random rnd = new Random();</div><div class="line">int coin = (int)(rnd.nextDouble()*max);</div><div class="line">coin = Math.max(1, coin);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h5 id="第二种方案的实现代码："><a href="#第二种方案的实现代码：" class="headerlink" title="第二种方案的实现代码："></a>第二种方案的实现代码：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">public int nextCoinAmount(int leftPacketAmount, int leftCoinAmount) &#123;</div><div class="line">    if (leftPacketAmount == 1) &#123;</div><div class="line">        return leftCoinAmount;</div><div class="line">    &#125;</div><div class="line">    if (leftCoinAmount &lt;= 0) &#123;</div><div class="line">        GCW_LOG.error(&quot;[redPacket] leftPacketAmount:&quot; + leftPacketAmount + &quot;,leftCoinAmount:&quot; + leftCoinAmount);</div><div class="line">        return 0;</div><div class="line">    &#125;</div><div class="line">    int coin = 0;</div><div class="line">    Random random = new Random();</div><div class="line">    double average = leftCoinAmount / leftPacketAmount;</div><div class="line">    double gaussian = random.nextGaussian();</div><div class="line">    Double d = Math.abs(average * (gaussian + 1)) + 10;    //至少分配10个金币</div><div class="line">    if (leftCoinAmount - d.intValue() &gt;= (leftPacketAmount - 1) * 10) &#123;    //剩余的金币足以分配每人100</div><div class="line">        coin = d.intValue();</div><div class="line">    &#125; else &#123;</div><div class="line">        coin = 10;</div><div class="line">    &#125;</div><div class="line">    return coin;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h4 id="二-关于红包的分配方案"><a href="#二-关于红包的分配方案" class="headerlink" title="二 关于红包的分配方案"></a>二 关于红包的分配方案</h4><ol>
+<li>进入一位用户实时分配红包大小</li>
+<li>预先分配好红包入库，进入用户直接分配</li>
+</ol>
+<p>第一种方式的劣势：对于正态分布无法阻止过大值或者最小值（可控制），最大的不足：高并发导致的leftPacketAmoutn和leftCoinAmount不正确导致计算出的结果不正确。<br>第二种方式的优势：可以预分配，达到自己想要的数据结果，高并发不存在问题<br>第二种方式的劣势：需要对数据库操作，增加库的压力，降低请求的处理速度</p>
+<hr>
+<h5 id="三-产品分析及设计"><a href="#三-产品分析及设计" class="headerlink" title="三 产品分析及设计"></a>三 产品分析及设计</h5><p>产品：<br>    列表页：50个视频<br>    详情页：观看视频获取口令–&gt;打开红包–&gt;输入口令–&gt;获取金币</p>
+<h5 id="对于产品逻辑的实现方案："><a href="#对于产品逻辑的实现方案：" class="headerlink" title="对于产品逻辑的实现方案："></a>对于产品逻辑的实现方案：</h5><h6 id="方案一"><a href="#方案一" class="headerlink" title="方案一"></a>方案一</h6><ol>
+<li>进入列表页</li>
+<li>达到开抢时间，进入详情页</li>
+<li>观看视频，获取口令，输入口令，获取金币<br>不足之处：</li>
+<li>经生产环境测试：红包开抢，大量用户涌入，导致无法进入详情页，大部分用户进不去系统</li>
+</ol>
+<h6 id="方案二（优化方案一）"><a href="#方案二（优化方案一）" class="headerlink" title="方案二（优化方案一）"></a>方案二（优化方案一）</h6><ol>
+<li>口令提前放出，在列表页添加即将开始的视频文件，可播放获取</li>
+<li>可进入详情页，红包点击位置隐藏换为倒计时展示，有效的解决了开抢时间大量用户访问页面无法进入的问题</li>
+</ol>
+<h5 id="如何解决并发问题"><a href="#如何解决并发问题" class="headerlink" title="如何解决并发问题"></a>如何解决并发问题</h5><h6 id="方案一-1"><a href="#方案一-1" class="headerlink" title="方案一"></a>方案一</h6><ol>
+<li>维护一个memCache变量（初始值为红包总量）</li>
+<li>当用户输入口令进入系统，基本校验（如口令）通过，memCache.decrement（1）减少1</li>
+<li>对数据库进行操作</li>
+<li>如果发生操作失败情况memCache.increment(1)<br>不足之处：</li>
+<li>经生产环境及jmeter压力测试 memCache在并发严重的情况下，无法保证读写一致（库的读写速度较慢），会导致问题（memCached红包总量先达到0）</li>
+<li>处理数据库会存在一定量的并发压力，抢占数据库资源出现问题</li>
+</ol>
+<h6 id="方案二（优化方案一memCached并发问题）"><a href="#方案二（优化方案一memCached并发问题）" class="headerlink" title="方案二（优化方案一memCached并发问题）"></a>方案二（优化方案一memCached并发问题）</h6><ol>
+<li>增加队列的处理方案</li>
+<li>当用户输入口令，发送请求至另外一个单服务器工程（维护一个请求队列）</li>
+<li>同时维护用户对应的队列处理状态</li>
+<li>单服务器工程处理库的问题并维护总的红包数量 有效的解决读写一致问题，单服务器无并发问题，<br>缺点：</li>
+<li>单服务器处理速度较慢</li>
+</ol>
+<h5 id="用户体验优化"><a href="#用户体验优化" class="headerlink" title="用户体验优化"></a>用户体验优化</h5><blockquote>
+<p>当用户输入完口令，处理并未结束，提示排队人数较多，请重试<br>用户重新抢红包时，只是获取上一次请求的队列中的处理状态</p>
+</blockquote>
+<h5 id="页面优化"><a href="#页面优化" class="headerlink" title="页面优化"></a>页面优化</h5><blockquote>
+<p>列表页大部分数据实现静态化<br>需要动态改变的信息，使用memCached缓存，定时更新</p>
+</blockquote>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><blockquote>
+<ol>
+<li>产品逻辑注意：当开抢时，尽量避免用户刷新页面</li>
+<li>对数据库的操作尽量减少，能缓存和静态化的数据就别落到库上</li>
+<li>提高用户体验</li>
+<li>不要过度依赖memCached</li>
+</ol>
+<p>未经作者允许 请勿转载，谢谢 :)</p>
+</blockquote>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[微信浏览器调起App]]></title>
+      <url>http://SeeMoonUp.github.io/2017/01/22/fe/wechatScheme/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>问题：App中分享到微信的链接 如何在app中打开呢<br>目前的通用解决方案：</p>
+<ul>
+<li>微信点击链接 跳转应用宝 打开</li>
+<li>跳转浏览器 调起app 打开链接</li>
+</ul>
+</blockquote>
+<p>下面来详细了解一下第二种解决方案<br>分享出去的链接比如share.html<br>其中的代码为<br><code>&lt;a href=&quot;www.seemoonup.com/jump.html?schema=***&quot;&gt;</code></p>
+<p>schema为app端提供的地址<br>请求发送到server之后跳转至中转页面jump.html</p>
+<p>下面来分析一下jump.html的页面逻辑</p>
+<ol>
+<li>打开分享页 点击在app中打开,进入中转jump页</li>
+<li>判断是否为wechat浏览器 </li>
+<li>如果在wechat浏览器中，则诱导用户使用浏览器打开此页面</li>
+<li>浏览器中打开jump页</li>
+<li>使用页面js方法schema尝试调起app 调起成功直接打开，调起失败提示跳转失败</li>
+</ol>
+<p>逻辑流程图<br><img src="http://upload-images.jianshu.io/upload_images/1329783-b49beea93566c15d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>这其中的逻辑主要集中在jump页面判断ua上面<br>其次对于如何调起schema对于ios和android以及版本的不同</p>
+<blockquote>
+<p>主要有两种方式：<br>frame.src = schema//嵌入frame<br>window.location=schema//url跳转</p>
+</blockquote>
+<p>具体实现代码根据业务需求实现</p>
+<blockquote>
+<p>总结:两种解决方式各有利弊，根据具体需求选用，使用应用宝就绕不开下载应用宝，使用中转方式 绕不开点击更多 使用浏览器打开<br>  适合自己的才是最好的</p>
+<p>未经作者允许 请勿转载，谢谢 :)</p>
+</blockquote>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[jstl el js灵活使用（三种方案处理页面逻辑）]]></title>
+      <url>http://SeeMoonUp.github.io/2017/01/22/java/jstl/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>场景描述：根据后台传入的值（value是否大于0）决定是否跳转（跳转地址vid-<em>）<br>备注：\</em>为后台传入的value</p>
+</blockquote>
+<hr>
+<p>.解决方案：</p>
+<h4 id="第一种方案：jstl"><a href="#第一种方案：jstl" class="headerlink" title="第一种方案：jstl"></a>第一种方案：jstl</h4><p>使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;c:choose&gt;</div><div class="line">  &lt;c:when test=&quot;$&#123;value &gt; 0&#125;&quot;&gt;</div><div class="line">    &lt;a href=&quot;vid-$&#123;value&#125;&quot; class=&quot;photo&quot; target=&quot;_blank&quot;&gt;</div><div class="line">    href</div><div class="line">    &lt;/a&gt;&lt;/c:when&gt;</div><div class="line">  &lt;c:otherwise&gt;</div><div class="line">    &lt;a href=&quot;javascript:void(0);&quot; class=&quot;photo&quot; target=&quot;_blank&quot;&gt;</div><div class="line">    href</div><div class="line">  &lt;/c:otherwise&gt;</div><div class="line">&lt;/c:choose&gt;</div></pre></td></tr></table></figure></p>
+<p>使用jstl表达式来完成</p>
+<hr>
+<h4 id="第二种方案：el表达式-三目运算符"><a href="#第二种方案：el表达式-三目运算符" class="headerlink" title="第二种方案：el表达式+三目运算符"></a>第二种方案：el表达式+三目运算符</h4><p>很显然使用第一种方式代码很臃肿，代码量太高<br>所以考虑能否使用el表达式中的三目运算符来解决这个问题<br>代码如下<br><code>&lt;a href=&quot;${value &gt; 0 ? &#39;vid-&#39;+value : &#39;&#39;}; &quot;</code></p>
+<p>发现会报错 原因是三目运算符中不支持字符串的加减，只支持数字间的逻辑运算<br>这样就比较尴尬了；</p>
+<hr>
+<h4 id="第三种方案：将逻辑转移到js文件当中-将videoId传入js中进行处理判断"><a href="#第三种方案：将逻辑转移到js文件当中-将videoId传入js中进行处理判断" class="headerlink" title="第三种方案：将逻辑转移到js文件当中 将videoId传入js中进行处理判断**"></a>第三种方案：将逻辑转移到js文件当中 将videoId传入js中进行处理判断**</h4><p>js代码如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function redirectUrl(value)&#123;</div><div class="line">  if(value &gt; 0) &#123;</div><div class="line">    window.location.href = &quot;vid-&quot;+value;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>jsp代码如下<br><code>&lt;a href=&quot;javascript:redirectUrl(${ value}); &quot;</code></p>
+<p>使用这种方案就解决了第二种方法不能够处理的问题</p>
+<blockquote>
+<p>总结：有时候思路转变一下 就会得到一种比较合理的解决方案</p>
+<p>未经作者允许 请勿转载，谢谢 :)</p>
+</blockquote>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[mysql sum 返回为null]]></title>
       <url>http://SeeMoonUp.github.io/2017/01/21/mysql/sumReturnNull/</url>
       <content type="html"><![CDATA[<h5 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h5><ol>
@@ -92,6 +216,7 @@
 <hr>
 <h6 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h6><blockquote>
 <p>本文提供简单的实现方案思路，具体的代码根据业务实现，不足之处不能动态处理数据源，优点bootstrap开放的api接口较多，可自定义实现。</p>
+<p>未经作者允许 请勿转载，谢谢 :) </p>
 </blockquote>
 ]]></content>
     </entry>

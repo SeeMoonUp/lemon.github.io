@@ -10,7 +10,7 @@
     
     <title>
         
-            mysql sum 返回为null | 
+            红包秒杀活动 | 
         
         lemon blog
     </title>
@@ -48,7 +48,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://SeeMoonUp.github.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="mysql sum 返回为null | lemon blog">
+    <meta property="og:title" content="红包秒杀活动 | lemon blog">
     <meta property="og:description" content="website java lemon">
 
     <!--[if lte IE 9]>
@@ -226,7 +226,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#问题描述："><span class="post-toc-number">1.</span> <span class="post-toc-text">问题描述：</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#解决方案："><span class="post-toc-number">2.</span> <span class="post-toc-text">解决方案：</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#一-如何分配红包"><span class="post-toc-number">1.</span> <span class="post-toc-text">一 如何分配红包</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#第一种方案的简单实现代码"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">第一种方案的简单实现代码</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#第二种方案的实现代码："><span class="post-toc-number">1.2.</span> <span class="post-toc-text">第二种方案的实现代码：</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#二-关于红包的分配方案"><span class="post-toc-number">2.</span> <span class="post-toc-text">二 关于红包的分配方案</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#三-产品分析及设计"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">三 产品分析及设计</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#对于产品逻辑的实现方案："><span class="post-toc-number">2.2.</span> <span class="post-toc-text">对于产品逻辑的实现方案：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#方案一"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">方案一</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#方案二（优化方案一）"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">方案二（优化方案一）</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#如何解决并发问题"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">如何解决并发问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#方案一-1"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">方案一</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#方案二（优化方案一memCached并发问题）"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">方案二（优化方案一memCached并发问题）</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#用户体验优化"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">用户体验优化</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#页面优化"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">页面优化</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#总结"><span class="post-toc-number">3.</span> <span class="post-toc-text">总结</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -262,7 +262,7 @@
         
     
             <p class="article-headline-p">
-                mysql sum 返回为null
+                红包秒杀活动
             </p>
         </div>
 
@@ -281,7 +281,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>lemon</strong>
-        <span>1月 21, 2017</span>
+        <span>1月 22, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -302,7 +302,7 @@
         </button>
         <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
             <li class="mdl-menu__item">在其它设备中阅读本文章</li>
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC0UlEQVR42u3aMXIjMQwEQP3/03Z6wUkaACvXCuyNVLbMZTOBOcDj58jngY2NjY2NjY2NjX1L9iN+ni73z2+ffY62VXxLdc/Y2NjYu9mTDSXbev2dZOXqgWJjY2Ofyc63e1XpquJ7e8bGxsbGzgvP02tAvObrFbCxsbGxry1gr0nViCp5CzY2Njb2PFRKSleV2jvWP83SsLGxsW/Pzjd9n89/2t/GxsbGvjG7+rw+jvzn1UtOdQDoPzvHxsbGXsrOC0MeJOVN3PnbC0Oi2NjY2KvZvS32WrnVBkDeJHjzt9jY2NhL2de2Zpst2Hh8p1rYsLGxsU9gf2JDvZZwHmNVyy02Njb2CexJfNNrweaHkpfDUX8bGxsb+2vZyaViUpAm60z2UwiVsLGxsVew3/wTH2+iWuqqF57epQgbGxt7NzuJgXqjNklIlPx8sjdsbGzsE9h5KJ80dOdFrrdCdHDY2NjYB7Dz4L7aGJgUnl44hY2NjX0auzeaMylIvVBpdNXBxsbGXspOXt8LmJLQaj4AVCh42NjY2EvZvYCpel2pFp48VCoUNmxsbOwD2HmrtRfoJyVqXiaxsbGxT2ZXG7dJTN8b0OnFW6OrCDY2NvaXs6vt2PxaMo+HkpKJjY2NfTJ7MnaTXAl6gzgfH77ExsbGXsfugZPIvnrE1b8tHDE2Njb2avYkHsqjqOaoTXw0bw4FGxsb+wB2L7jPAb2C9/GZU2xsbOxF7GSwphf954OVvTUvq9vY2NjYX8iuPtVAJw+Dqq2C/DvY2NjYu9kXF4li2bvqc7RnbGxs7NXspGjlBSkPnqrv6rUlsLGxsc9hJ8H9hHpVFJUULWxsbGzs/F//SVN20oSohlzY2NjY2JMofxJLJVemUaiEjY2NvYidBD2T6D9feRIelQsYNjY29gp2NaypRv/VkhaN4FSb09jY2NhL2ec82NjY2NjY2NjY2Ld5fgGmi6S32tFkkQAAAABJRU5ErkJggg==">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC1ElEQVR42u3aQVLDMBAEwPz/03ClCuLMrAwVpPaJSmLJ7cuys3p8HHk9sLGxsbGxsbGxsd+S/Yiv73ddr/PDxl8+T/5+Cpg9MzY2NvbW7GSbZxvnq32/a2X3+i5sbGzsA9jPCkD7oMmrSfZKPinWwcbGxsYu24Dkruv18zYGGxsbG3tWwPISdf37pExiY2NjY98VKiWYBJa/+tuiKGxsbOyt2W1T8Q5//+l8GxsbG/uN2e2VF7DrxqMtb/k6T9fHxsbG3pTdtgF53N8OaNeHDS8ODGFjY2Nvyp6NeFcO08yK2Q3RFTY2NvYB7HzsmtzVrr9S0pLWBRsbG3tXdl6Q8jFwvkLLKBoPbGxs7CPZ+UggaVTaRuK3AyZsbGzsvdmzMGj2yvKDOPlLHw56sbGxsbdj14F7MAbO4/71+KkOlbCxsbG3YM8CoFn5WQ/9Z6ULGxsb+xx2Hhgl3+ZRVF4ak2YmGg9gY2Njb8S+7UDMqKlYYqwcvsTGxsbeiH0NW2kPihFscO8vhkrY2NjY/5x910ggWSF/6NnvX+yOjY2NfRi7LSR5IWx3nMVVUQeGjY2NvQU7ifjbWH/2SX7Qc/hs2NjY2Fuz2+bh3hfXlsC8uGJjY2OfzL7+d3897mkPULbsYQHDxsbG/ufsJKDPi1NyZGcWG7X7YmNjY+/NbkP2nNFGRSvhVDR4xsbGxj6G3QY6K41E0qLkB3qKUAkbGxt7a/bsCE770LNvl4oiNjY29mHsWdC/8ssktJq9emxsbOy92e3VHutZP3aTHxV6UdiwsbGxN2UvlYTlctVGSG20hI2NjX0O+28GurMjOLNXjI2NjX0mOykGK4++8kLbQouNjY2Nnf/rnzQqbZyUh0fFCtjY2NjYZSuyUg7bQhiNMbCxsbEPYK8Md/Oxax5FtYEUNjY29snsWVizUrTaoz+z4AkbGxv7BPY5FzY2NjY2NjY2NvbbXJ8vngttJcPvYQAAAABJRU5ErkJggg==">
         </ul>
     
 
@@ -314,7 +314,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/mysql/">mysql</a>
+        <a class="post_tag-link" href="/tags/java/">java</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/memCached/">memCached</a>
     </ul>
     
 
@@ -330,7 +330,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=mysql sum 返回为null&url=http://SeeMoonUp.github.io//2017/01/21/mysql/sumReturnNull/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=红包秒杀活动&url=http://SeeMoonUp.github.io//2017/01/22/java/redpacket/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -339,7 +339,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=mysql sum 返回为null&url=http://SeeMoonUp.github.io//2017/01/21/mysql/sumReturnNull/index.html&via=lemon" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=红包秒杀活动&url=http://SeeMoonUp.github.io//2017/01/22/java/redpacket/index.html&via=lemon" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -348,7 +348,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://SeeMoonUp.github.io//2017/01/21/mysql/sumReturnNull/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://SeeMoonUp.github.io//2017/01/22/java/redpacket/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -357,7 +357,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://SeeMoonUp.github.io//2017/01/21/mysql/sumReturnNull/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://SeeMoonUp.github.io//2017/01/22/java/redpacket/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -381,18 +381,67 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h5 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h5><ol>
-<li>使用mysql进行sum求和</li>
-<li>java使用int类型来接收</li>
-<li>当sum()where条件后没有满足的数据，返回null</li>
-<li>java转换为int的时候 报错如下：<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">org.apache.ibatis.binding.BindingException: Mapper method 'getShopTotalUseProfit' (interface cc.laowantong.dao.mapper.MallOrderMapper) attempted to return null from a method with a primitive return type (int).</div><div class="line">	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:42)</div><div class="line">	at com.sun.proxy.$Proxy78.getShopTotalUseProfit(Unknown Source)</div><div class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</div><div class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)</div><div class="line">	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</div><div class="line">	at java.lang.reflect.Method.invoke(Method.java:498)</div></pre></td></tr></table></figure>
+        <p>并发抢红包算法及实现</p>
+<ol>
+<li>如何分配红包</li>
+<li>如何控制抢红包的并发（类似秒杀系统）</li>
+</ol>
+<hr>
+<h4 id="一-如何分配红包"><a href="#一-如何分配红包" class="headerlink" title="一 如何分配红包"></a>一 如何分配红包</h4><p>分配红包的要求：``<br>a. 较为均匀，同时允许出现较大值和较小值<br>b. 不能为0<br>c. 指定红包个数和总量，可以自动分配完全<br>解决方案：</p>
+<ol>
+<li>较为均匀的分布，简单的伪微信红包 缺点 红包金额较为均匀</li>
+<li>使用正态分布来动态实现红包的分布（作者最终采用的方案）<h5 id="第一种方案的简单实现代码"><a href="#第一种方案的简单实现代码" class="headerlink" title="第一种方案的简单实现代码"></a>第一种方案的简单实现代码</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">if(leftPacketAmount == 1)&#123;</div><div class="line">    return leftCoinAmount;</div><div class="line">&#125;</div><div class="line">int max = leftCoinAmount/leftPacketAmount * 2;</div><div class="line">Random rnd = new Random();</div><div class="line">int coin = (int)(rnd.nextDouble()*max);</div><div class="line">coin = Math.max(1, coin);</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<h5 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h5><ol>
-<li>使用函数coalesce(arg1,arg2,…)</li>
-<li>函数解释：返回参数中第一个非空的参数</li>
-<li>最终的sql为： <code>SELECT COALESCE(SUM(total),0)  FROM test_table</code></li>
+<h5 id="第二种方案的实现代码："><a href="#第二种方案的实现代码：" class="headerlink" title="第二种方案的实现代码："></a>第二种方案的实现代码：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">public int nextCoinAmount(int leftPacketAmount, int leftCoinAmount) &#123;</div><div class="line">    if (leftPacketAmount == 1) &#123;</div><div class="line">        return leftCoinAmount;</div><div class="line">    &#125;</div><div class="line">    if (leftCoinAmount &lt;= 0) &#123;</div><div class="line">        GCW_LOG.error(&quot;[redPacket] leftPacketAmount:&quot; + leftPacketAmount + &quot;,leftCoinAmount:&quot; + leftCoinAmount);</div><div class="line">        return 0;</div><div class="line">    &#125;</div><div class="line">    int coin = 0;</div><div class="line">    Random random = new Random();</div><div class="line">    double average = leftCoinAmount / leftPacketAmount;</div><div class="line">    double gaussian = random.nextGaussian();</div><div class="line">    Double d = Math.abs(average * (gaussian + 1)) + 10;    //至少分配10个金币</div><div class="line">    if (leftCoinAmount - d.intValue() &gt;= (leftPacketAmount - 1) * 10) &#123;    //剩余的金币足以分配每人100</div><div class="line">        coin = d.intValue();</div><div class="line">    &#125; else &#123;</div><div class="line">        coin = 10;</div><div class="line">    &#125;</div><div class="line">    return coin;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h4 id="二-关于红包的分配方案"><a href="#二-关于红包的分配方案" class="headerlink" title="二 关于红包的分配方案"></a>二 关于红包的分配方案</h4><ol>
+<li>进入一位用户实时分配红包大小</li>
+<li>预先分配好红包入库，进入用户直接分配</li>
 </ol>
+<p>第一种方式的劣势：对于正态分布无法阻止过大值或者最小值（可控制），最大的不足：高并发导致的leftPacketAmoutn和leftCoinAmount不正确导致计算出的结果不正确。<br>第二种方式的优势：可以预分配，达到自己想要的数据结果，高并发不存在问题<br>第二种方式的劣势：需要对数据库操作，增加库的压力，降低请求的处理速度</p>
+<hr>
+<h5 id="三-产品分析及设计"><a href="#三-产品分析及设计" class="headerlink" title="三 产品分析及设计"></a>三 产品分析及设计</h5><p>产品：<br>    列表页：50个视频<br>    详情页：观看视频获取口令–&gt;打开红包–&gt;输入口令–&gt;获取金币</p>
+<h5 id="对于产品逻辑的实现方案："><a href="#对于产品逻辑的实现方案：" class="headerlink" title="对于产品逻辑的实现方案："></a>对于产品逻辑的实现方案：</h5><h6 id="方案一"><a href="#方案一" class="headerlink" title="方案一"></a>方案一</h6><ol>
+<li>进入列表页</li>
+<li>达到开抢时间，进入详情页</li>
+<li>观看视频，获取口令，输入口令，获取金币<br>不足之处：</li>
+<li>经生产环境测试：红包开抢，大量用户涌入，导致无法进入详情页，大部分用户进不去系统</li>
+</ol>
+<h6 id="方案二（优化方案一）"><a href="#方案二（优化方案一）" class="headerlink" title="方案二（优化方案一）"></a>方案二（优化方案一）</h6><ol>
+<li>口令提前放出，在列表页添加即将开始的视频文件，可播放获取</li>
+<li>可进入详情页，红包点击位置隐藏换为倒计时展示，有效的解决了开抢时间大量用户访问页面无法进入的问题</li>
+</ol>
+<h5 id="如何解决并发问题"><a href="#如何解决并发问题" class="headerlink" title="如何解决并发问题"></a>如何解决并发问题</h5><h6 id="方案一-1"><a href="#方案一-1" class="headerlink" title="方案一"></a>方案一</h6><ol>
+<li>维护一个memCache变量（初始值为红包总量）</li>
+<li>当用户输入口令进入系统，基本校验（如口令）通过，memCache.decrement（1）减少1</li>
+<li>对数据库进行操作</li>
+<li>如果发生操作失败情况memCache.increment(1)<br>不足之处：</li>
+<li>经生产环境及jmeter压力测试 memCache在并发严重的情况下，无法保证读写一致（库的读写速度较慢），会导致问题（memCached红包总量先达到0）</li>
+<li>处理数据库会存在一定量的并发压力，抢占数据库资源出现问题</li>
+</ol>
+<h6 id="方案二（优化方案一memCached并发问题）"><a href="#方案二（优化方案一memCached并发问题）" class="headerlink" title="方案二（优化方案一memCached并发问题）"></a>方案二（优化方案一memCached并发问题）</h6><ol>
+<li>增加队列的处理方案</li>
+<li>当用户输入口令，发送请求至另外一个单服务器工程（维护一个请求队列）</li>
+<li>同时维护用户对应的队列处理状态</li>
+<li>单服务器工程处理库的问题并维护总的红包数量 有效的解决读写一致问题，单服务器无并发问题，<br>缺点：</li>
+<li>单服务器处理速度较慢</li>
+</ol>
+<h5 id="用户体验优化"><a href="#用户体验优化" class="headerlink" title="用户体验优化"></a>用户体验优化</h5><blockquote>
+<p>当用户输入完口令，处理并未结束，提示排队人数较多，请重试<br>用户重新抢红包时，只是获取上一次请求的队列中的处理状态</p>
+</blockquote>
+<h5 id="页面优化"><a href="#页面优化" class="headerlink" title="页面优化"></a>页面优化</h5><blockquote>
+<p>列表页大部分数据实现静态化<br>需要动态改变的信息，使用memCached缓存，定时更新</p>
+</blockquote>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><blockquote>
+<ol>
+<li>产品逻辑注意：当开抢时，尽量避免用户刷新页面</li>
+<li>对数据库的操作尽量减少，能缓存和静态化的数据就别落到库上</li>
+<li>提高用户体验</li>
+<li>不要过度依赖memCached</li>
+</ol>
+<p>未经作者允许 请勿转载，谢谢 :)</p>
+</blockquote>
 
     
 
@@ -421,9 +470,9 @@
 <div id="comments">
     <!-- 多说评论框 start -->
     <div class="ds-thread"
-        data-thread-key="2017/01/21/mysql/sumReturnNull/"
-        data-url="http://SeeMoonUp.github.io/2017/01/21/mysql/sumReturnNull/"
-        data-title="mysql sum 返回为null">
+        data-thread-key="2017/01/22/java/redpacket/"
+        data-url="http://SeeMoonUp.github.io/2017/01/22/java/redpacket/"
+        data-title="红包秒杀活动">
     </div>
     <!-- 多说评论框 end -->
 </div>
@@ -439,21 +488,13 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/01/22/java/jstl/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2017/01/21/stone/Qingwen/" id="post_nav-older" class="next-content">
+        <a href="/2017/01/22/fe/wechatScheme/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
