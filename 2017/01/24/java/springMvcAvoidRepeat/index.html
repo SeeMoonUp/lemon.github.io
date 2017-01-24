@@ -10,7 +10,7 @@
     
     <title>
         
-            mysql sum 返回为null | 
+            springMvc+token实现防止重复提交(上) | 
         
         lemon blog
     </title>
@@ -48,7 +48,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://SeeMoonUp.github.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="mysql sum 返回为null | lemon blog">
+    <meta property="og:title" content="springMvc+token实现防止重复提交(上) | lemon blog">
     <meta property="og:description" content="website java lemon">
 
     <!--[if lte IE 9]>
@@ -226,7 +226,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#问题描述："><span class="post-toc-number">1.</span> <span class="post-toc-text">问题描述：</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#解决方案："><span class="post-toc-number">2.</span> <span class="post-toc-text">解决方案：</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#1-新建注解："><span class="post-toc-number">1.</span> <span class="post-toc-text">1. 新建注解：</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2-新建拦截器"><span class="post-toc-number">2.</span> <span class="post-toc-text">2. 新建拦截器</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#3-在Spring中配置"><span class="post-toc-number">3.</span> <span class="post-toc-text">3. 在Spring中配置</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#4-在相关方法中加入注解："><span class="post-toc-number">4.</span> <span class="post-toc-text">4. 在相关方法中加入注解：</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#5-在新建页面中加入"><span class="post-toc-number">5.</span> <span class="post-toc-text">5. 在新建页面中加入</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -262,7 +262,7 @@
         
     
             <p class="article-headline-p">
-                mysql sum 返回为null
+                springMvc+token实现防止重复提交(上)
             </p>
         </div>
 
@@ -281,7 +281,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>lemon</strong>
-        <span>1月 21, 2017</span>
+        <span>1月 24, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -302,7 +302,7 @@
         </button>
         <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
             <li class="mdl-menu__item">在其它设备中阅读本文章</li>
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC0UlEQVR42u3aMXIjMQwEQP3/03Z6wUkaACvXCuyNVLbMZTOBOcDj58jngY2NjY2NjY2NjX1L9iN+ni73z2+ffY62VXxLdc/Y2NjYu9mTDSXbev2dZOXqgWJjY2Ofyc63e1XpquJ7e8bGxsbGzgvP02tAvObrFbCxsbGxry1gr0nViCp5CzY2Njb2PFRKSleV2jvWP83SsLGxsW/Pzjd9n89/2t/GxsbGvjG7+rw+jvzn1UtOdQDoPzvHxsbGXsrOC0MeJOVN3PnbC0Oi2NjY2KvZvS32WrnVBkDeJHjzt9jY2NhL2de2Zpst2Hh8p1rYsLGxsU9gf2JDvZZwHmNVyy02Njb2CexJfNNrweaHkpfDUX8bGxsb+2vZyaViUpAm60z2UwiVsLGxsVew3/wTH2+iWuqqF57epQgbGxt7NzuJgXqjNklIlPx8sjdsbGzsE9h5KJ80dOdFrrdCdHDY2NjYB7Dz4L7aGJgUnl44hY2NjX0auzeaMylIvVBpdNXBxsbGXspOXt8LmJLQaj4AVCh42NjY2EvZvYCpel2pFp48VCoUNmxsbOwD2HmrtRfoJyVqXiaxsbGxT2ZXG7dJTN8b0OnFW6OrCDY2NvaXs6vt2PxaMo+HkpKJjY2NfTJ7MnaTXAl6gzgfH77ExsbGXsfugZPIvnrE1b8tHDE2Njb2avYkHsqjqOaoTXw0bw4FGxsb+wB2L7jPAb2C9/GZU2xsbOxF7GSwphf954OVvTUvq9vY2NjYX8iuPtVAJw+Dqq2C/DvY2NjYu9kXF4li2bvqc7RnbGxs7NXspGjlBSkPnqrv6rUlsLGxsc9hJ8H9hHpVFJUULWxsbGzs/F//SVN20oSohlzY2NjY2JMofxJLJVemUaiEjY2NvYidBD2T6D9feRIelQsYNjY29gp2NaypRv/VkhaN4FSb09jY2NhL2ec82NjY2NjY2NjY2Ld5fgGmi6S32tFkkQAAAABJRU5ErkJggg==">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC30lEQVR42u3aQXLbMBAEQP3/0841VS4xMwspEoHmyWXRJBoHj3YXj58jrwc2NjY2NjY2Njb2V7If8fX3/b+fkHz67I3PnnN9Z75mbGxs7BPY//jXHyw936DrN14vfWnN2NjY2Aewc0Cy3ChUnrz9mjFbMzY2NjZ2WzDMQrEtb7CxsbGxZ+x20bPm1Kz9hI2NjX0yOwmbtmWfbNzKtv6nXho2Njb217Nng97P/vyx+TY2Njb2l7Hb67p9344WVgYG9cqxsbGxN2Xng9WkSMib+3nwzP5qWIFhY2Nj35D9qsM6SUsoaUXNgjO6ExsbG3tTdjtGXYqQ8njlLNiKUgQbGxt7I3YbG9db9o7NyqOrCDBsbGzsA9iz4MmfkA8DkvFzPd/GxsbG3ojdLmslotrwaze0biphY2Nj35z97hFvPjCYHQYaNpWwsbGxt2PPWvzryGS5s6FvfWQHGxsb+7bs5Kv/ypGa2eGelSNB2NjY2Gey80b/rHG/stHJnVG8YWNjY2/Knh2+aSNnZftWBszY2NjYJ7BfNYjN2z1F8RA3qpKSCRsbG3tXdtv6z8Mm/zRvM7VlCTY2NvY57CQe8mhZGf1+oKmEjY2NfQB71uJpm015yOWlETY2NvYJ7JUx7Qo+L2ZeNmDGxsbGPoA9a9y3I9jZRudbVkxFsLGxsTdlrxy1Se7MP21Hy8NSBBsbG/vm7Pwr/mvLkutYarcDGxsbG7semsZxlbeW6kCKn4mNjY29N7s98pj/fvaWNlDfWIFhY2Nj34TdXrPxbd7oX4lSbGxs7DPZ7eh0Bda2/hNeHmPY2NjYe7PbAW073G1bSyuFShFg2NjY2Nux21haaS3VRydHpQ42NjY2dtvQmUXdrPhpCxJsbGxs7LxIKEIlLkXygfFbShFsbGzsm7DzplI+AM4LmJaUxBg2Njb2OezZoHd2mKY9mpNsehSH2NjY2Juyz7mwsbGxsbGxsbGxv+b6A2Ece+6/dGa8AAAAAElFTkSuQmCC">
         </ul>
     
 
@@ -314,7 +314,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/mysql/">mysql</a>
+        <a class="post_tag-link" href="/tags/java/">java</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/springMvc/">springMvc</a>
     </ul>
     
 
@@ -330,7 +330,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=mysql sum 返回为null&url=http://SeeMoonUp.github.io//2017/01/21/mysql/sumReturnNull/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=springMvc+token实现防止重复提交(上)&url=http://SeeMoonUp.github.io//2017/01/24/java/springMvcAvoidRepeat/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -339,7 +339,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=mysql sum 返回为null&url=http://SeeMoonUp.github.io//2017/01/21/mysql/sumReturnNull/index.html&via=lemon" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=springMvc+token实现防止重复提交(上)&url=http://SeeMoonUp.github.io//2017/01/24/java/springMvcAvoidRepeat/index.html&via=lemon" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -348,7 +348,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://SeeMoonUp.github.io//2017/01/21/mysql/sumReturnNull/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://SeeMoonUp.github.io//2017/01/24/java/springMvcAvoidRepeat/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -357,7 +357,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://SeeMoonUp.github.io//2017/01/21/mysql/sumReturnNull/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://SeeMoonUp.github.io//2017/01/24/java/springMvcAvoidRepeat/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -381,18 +381,24 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h5 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h5><ol>
-<li>使用mysql进行sum求和</li>
-<li>java使用int类型来接收</li>
-<li>当sum()where条件后没有满足的数据，返回null</li>
-<li>java转换为int的时候 报错如下：<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">org.apache.ibatis.binding.BindingException: Mapper method 'getShopTotalUseProfit' (interface cc.laowantong.dao.mapper.MallOrderMapper) attempted to return null from a method with a primitive return type (int).</div><div class="line">	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:42)</div><div class="line">	at com.sun.proxy.$Proxy78.getShopTotalUseProfit(Unknown Source)</div><div class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</div><div class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)</div><div class="line">	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</div><div class="line">	at java.lang.reflect.Method.invoke(Method.java:498)</div></pre></td></tr></table></figure>
-</li>
+        <p>众所周知，在开发的过程中会出现重复提交表单的情况<br>一般的解决方案：</p>
+<ol>
+<li>前端点击按钮之后隐藏按钮或者置为不可点击</li>
+<li>在服务端检查此用户是否提交过表单，如果提交过拒绝</li>
 </ol>
-<h5 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h5><ol>
-<li>使用函数coalesce(arg1,arg2,…)</li>
-<li>函数解释：返回参数中第一个非空的参数</li>
-<li>最终的sql为： <code>SELECT COALESCE(SUM(total),0)  FROM test_table</code></li>
-</ol>
+<blockquote>
+<p>但是问题在如果发生了金手指（用户手速特快），同时触发了两次请求，这样的话无论是前端拦截还是服务端链接都是没有效果的</p>
+</blockquote>
+<p>解决方案：<br>增加一层拦截，在进入页面的时候加上一个标识，此标识只能使用一次，当提交过后含有此标识的请求将不会成功</p>
+<p>原理：在新建页面中Session保存token随机码，当保存时验证，通过后删除，当再次点击保存时由于服务器端的Session中已经不存在了，所有无法验证通过。</p>
+<h5 id="1-新建注解："><a href="#1-新建注解：" class="headerlink" title="1. 新建注解："></a>1. 新建注解：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * &lt;p&gt;</div><div class="line"> * 防止重复提交注解，用于方法上&lt;br/&gt;</div><div class="line"> * 在新建页面方法上，设置needSaveToken()为true，此时拦截器会在Session中保存一个token，</div><div class="line"> * 同时需要在新建的页面中添加</div><div class="line"> * &lt;input type=&quot;hidden&quot; name=&quot;token&quot; value=&quot;$&#123;token&#125;&quot;&gt;</div><div class="line"> * &lt;br/&gt;</div><div class="line"> * 保存方法需要验证重复提交的，设置needRemoveToken为true</div><div class="line"> * 此时会在拦截器中验证是否重复提交</div><div class="line"> * &lt;/p&gt;</div><div class="line"> * @author: chuanli</div><div class="line"> * @date: 2013-6-27上午11:14:02</div><div class="line"> *</div><div class="line"> */</div><div class="line">@Target(ElementType.METHOD)</div><div class="line">@Retention(RetentionPolicy.RUNTIME)</div><div class="line">public @interface AvoidDuplicateSubmission &#123;</div><div class="line">    boolean needSaveToken() default false;</div><div class="line">    boolean needRemoveToken() default false;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="2-新建拦截器"><a href="#2-新建拦截器" class="headerlink" title="2. 新建拦截器"></a>2. 新建拦截器</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * &lt;p&gt;</div><div class="line"> * 防止重复提交过滤器</div><div class="line"> * &lt;/p&gt;</div><div class="line"> *</div><div class="line"> * @author: chuanli</div><div class="line"> * @date: 2013-6-27上午11:19:05</div><div class="line"> */public class AvoidDuplicateSubmissionInterceptor extends HandlerInterceptorAdapter &#123;</div><div class="line">    private static final Logger LOG = Logger.getLogger(AvoidDuplicateSubmissionInterceptor.class);</div><div class="line"></div><div class="line">    @Overridepublic boolean preHandle(HttpServletRequest request,</div><div class="line">            HttpServletResponse response, Object handler) throws Exception &#123;</div><div class="line"></div><div class="line">        User user = UserUtil.getUser();</div><div class="line">        if (user != null) &#123;</div><div class="line">            HandlerMethod handlerMethod = (HandlerMethod) handler;</div><div class="line">            Method method = handlerMethod.getMethod();</div><div class="line"></div><div class="line">            AvoidDuplicateSubmission annotation = method.getAnnotation(AvoidDuplicateSubmission.class);</div><div class="line">            if (annotation != null) &#123;</div><div class="line">                boolean needSaveSession = annotation.needSaveToken();</div><div class="line">                if (needSaveSession) &#123;</div><div class="line">                    request.getSession(false).setAttribute(&quot;token&quot;, TokenProcessor.getInstance().generateToken());</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                boolean needRemoveSession = annotation.needRemoveToken();</div><div class="line">                if (needRemoveSession) &#123;</div><div class="line">                    if (isRepeatSubmit(request)) &#123;</div><div class="line">                        LOG.warn(&quot;please don&apos;t repeat submit,[user:&quot; + user.getUsername() + &quot;,url:&quot;</div><div class="line">                                + request.getServletPath() + &quot;]&quot;);</div><div class="line">                        return false;</div><div class="line">                    &#125;</div><div class="line">                    request.getSession(false).removeAttribute(&quot;token&quot;);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private boolean isRepeatSubmit(HttpServletRequest request) &#123;</div><div class="line">        String serverToken = (String) request.getSession(false).getAttribute(&quot;token&quot;);</div><div class="line">        if (serverToken == null) &#123;</div><div class="line">            return true;</div><div class="line">        &#125;</div><div class="line">        String clinetToken = request.getParameter(&quot;token&quot;);</div><div class="line">        if (clinetToken == null) &#123;</div><div class="line">            return true;</div><div class="line">        &#125;</div><div class="line">        if (!serverToken.equals(clinetToken)) &#123;</div><div class="line">            return true;</div><div class="line">        &#125;</div><div class="line">        return false;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="3-在Spring中配置"><a href="#3-在Spring中配置" class="headerlink" title="3. 在Spring中配置"></a>3. 在Spring中配置</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;bean class=&quot;org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping&quot;&gt;</div><div class="line">   &lt;property name=&quot;interceptors&quot;&gt;</div><div class="line">   &lt;list&gt;</div><div class="line">       &lt;bean class=&quot;com.sohu.tv.crm.aop.UserLogInterceptor&quot;/&gt;</div><div class="line">       &lt;bean class=&quot;com.sohu.tv.crm.aop.AvoidDuplicateSubmissionInterceptor&quot;/&gt;</div><div class="line">    &lt;/list&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">&lt;/bean&gt;</div></pre></td></tr></table></figure>
+<h5 id="4-在相关方法中加入注解："><a href="#4-在相关方法中加入注解：" class="headerlink" title="4. 在相关方法中加入注解："></a>4. 在相关方法中加入注解：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@RequestMapping(&quot;/save&quot;)</div><div class="line">@AvoidDuplicateSubmission(needRemoveToken = true)</div><div class="line">public synchronized ModelAndView save(ExecutionUnit unit, HttpServletRequest request, HttpServletResponse response)</div><div class="line">        throws Exception &#123;</div><div class="line"></div><div class="line">@RequestMapping(&quot;/edit&quot;)</div><div class="line">@AvoidDuplicateSubmission(needSaveToken = true)</div><div class="line">public ModelAndView edit(Integer id, HttpServletRequest request) throws Exception &#123;</div></pre></td></tr></table></figure>
+<h5 id="5-在新建页面中加入"><a href="#5-在新建页面中加入" class="headerlink" title="5. 在新建页面中加入"></a>5. 在新建页面中加入</h5><p><code>&lt;input type=&quot;hidden&quot; name=&quot;token&quot; value=&quot;${token}&quot;&gt;</code></p>
+<p>注 在配置文件中加入上述配置 不起作用<br>解决方式：在配置文件servlet_context.xml中加入（删除原有配置文件）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;mvc:interceptors&gt;</div><div class="line">   &lt;mvc:interceptor&gt;</div><div class="line">      &lt;mvc:mapping path=&quot;/club/**&quot;/&gt;</div><div class="line">      &lt;bean class=&quot;cc.laowantong.core.interceptor.AvoidDuplicateSubmissionInterceptor&quot;/&gt;</div><div class="line">   &lt;/mvc:interceptor&gt;</div><div class="line">&lt;/mvc:interceptors&gt;</div></pre></td></tr></table></figure></p>
+<p>但是这种方式对于集群（多台服务器无效）基于seesion，所以需修改，详见下一篇文章<br><a href="/2017/01/24/java/springMvcAvoidRepeatByMemcached/">springMvc+token实现防止重复提交（下）</a></p>
+<p>此文章原创： <a href="https://my.oschina.net/mushui/blog/143397" target="_blank" rel="external">https://my.oschina.net/mushui/blog/143397</a></p>
 
     
 
@@ -421,9 +427,9 @@
 <div id="comments">
     <!-- 多说评论框 start -->
     <div class="ds-thread"
-        data-thread-key="2017/01/21/mysql/sumReturnNull/"
-        data-url="http://SeeMoonUp.github.io/2017/01/21/mysql/sumReturnNull/"
-        data-title="mysql sum 返回为null">
+        data-thread-key="2017/01/24/java/springMvcAvoidRepeat/"
+        data-url="http://SeeMoonUp.github.io/2017/01/24/java/springMvcAvoidRepeat/"
+        data-title="springMvc+token实现防止重复提交(上)">
     </div>
     <!-- 多说评论框 end -->
 </div>
@@ -439,7 +445,7 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/01/22/java/jstl/" id="post_nav-newer" class="prev-content">
+        <a href="/2017/01/24/java/springMvcAvoidRepeatByMemcached/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -453,7 +459,7 @@
 
     <!-- Next Nav -->
     
-        <a href="/2017/01/21/stone/Qingwen/" id="post_nav-older" class="next-content">
+        <a href="/2017/01/22/java/redpacket/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">

@@ -10,7 +10,7 @@
     
     <title>
         
-            mysql sum 返回为null | 
+            springMvc+token实现防止重复提交（下） | 
         
         lemon blog
     </title>
@@ -48,7 +48,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://SeeMoonUp.github.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="mysql sum 返回为null | lemon blog">
+    <meta property="og:title" content="springMvc+token实现防止重复提交（下） | lemon blog">
     <meta property="og:description" content="website java lemon">
 
     <!--[if lte IE 9]>
@@ -226,7 +226,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#问题描述："><span class="post-toc-number">1.</span> <span class="post-toc-text">问题描述：</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#解决方案："><span class="post-toc-number">2.</span> <span class="post-toc-text">解决方案：</span></a></li></ol>
+        
 
         <!--
         <li class="mdl-menu__item">
@@ -262,7 +262,7 @@
         
     
             <p class="article-headline-p">
-                mysql sum 返回为null
+                springMvc+token实现防止重复提交（下）
             </p>
         </div>
 
@@ -281,7 +281,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>lemon</strong>
-        <span>1月 21, 2017</span>
+        <span>1月 24, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -302,7 +302,7 @@
         </button>
         <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
             <li class="mdl-menu__item">在其它设备中阅读本文章</li>
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC0UlEQVR42u3aMXIjMQwEQP3/03Z6wUkaACvXCuyNVLbMZTOBOcDj58jngY2NjY2NjY2NjX1L9iN+ni73z2+ffY62VXxLdc/Y2NjYu9mTDSXbev2dZOXqgWJjY2Ofyc63e1XpquJ7e8bGxsbGzgvP02tAvObrFbCxsbGxry1gr0nViCp5CzY2Njb2PFRKSleV2jvWP83SsLGxsW/Pzjd9n89/2t/GxsbGvjG7+rw+jvzn1UtOdQDoPzvHxsbGXsrOC0MeJOVN3PnbC0Oi2NjY2KvZvS32WrnVBkDeJHjzt9jY2NhL2de2Zpst2Hh8p1rYsLGxsU9gf2JDvZZwHmNVyy02Njb2CexJfNNrweaHkpfDUX8bGxsb+2vZyaViUpAm60z2UwiVsLGxsVew3/wTH2+iWuqqF57epQgbGxt7NzuJgXqjNklIlPx8sjdsbGzsE9h5KJ80dOdFrrdCdHDY2NjYB7Dz4L7aGJgUnl44hY2NjX0auzeaMylIvVBpdNXBxsbGXspOXt8LmJLQaj4AVCh42NjY2EvZvYCpel2pFp48VCoUNmxsbOwD2HmrtRfoJyVqXiaxsbGxT2ZXG7dJTN8b0OnFW6OrCDY2NvaXs6vt2PxaMo+HkpKJjY2NfTJ7MnaTXAl6gzgfH77ExsbGXsfugZPIvnrE1b8tHDE2Njb2avYkHsqjqOaoTXw0bw4FGxsb+wB2L7jPAb2C9/GZU2xsbOxF7GSwphf954OVvTUvq9vY2NjYX8iuPtVAJw+Dqq2C/DvY2NjYu9kXF4li2bvqc7RnbGxs7NXspGjlBSkPnqrv6rUlsLGxsc9hJ8H9hHpVFJUULWxsbGzs/F//SVN20oSohlzY2NjY2JMofxJLJVemUaiEjY2NvYidBD2T6D9feRIelQsYNjY29gp2NaypRv/VkhaN4FSb09jY2NhL2ec82NjY2NjY2NjY2Ld5fgGmi6S32tFkkQAAAABJRU5ErkJggg==">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOCAAAAABd2qZ5AAADg0lEQVR42u3aS27kMAwFwL7/pWe2AwRx3iMtxwOUVo2025bKC4afzx/rn/VBgAMHDhw4cODAgQPHizk+8Soe8OX65M7ffU7uuTkLDhw4cOA4wdEer73mu2/vhZvtEwcOHDhwnOPIHx8FsHIl4TM/anIWHDhw4MDxZo7rO1wz5UE3D7Q4cODAgeN/5Lgu1SVB9zq4JsneiwItDhw4cOAYFdQ2EO3f87D9a7VSHDhw4MCxHmh4/+dH5ztw4MCBA8cXjna1Q2w3FO/KEF6fCAcOHDhw3MqxH1ZoyfJv8zA/S/9w4MCBA8cJjiRA5iW5tmWVoO9TtWEKhwMHDhw4RhyzrSRpWI6bD0C0oXeYwuHAgQMHjsMctz14cZjZaF005IcDBw4cOG7lyBs8s6Rrn561d8tfAA4cOHDgOMHRDpZtmkPtMfIA3I5Z4MCBAweOcxxtka4dIEhC4D64zsIwDhw4cOA4wVEEpLjxMwt+m51sxvtw4MCBA8cJjnYQLS8v5r/ap5FJelkPNODAgQMHjhFHPsSwAVolWmVwzVNKHDhw4MBxjqN98PUm2nC4KVDmL29VHMSBAwcOHAFH8shZ06hdbTI5S96igQYcOHDgwHGMI2/h5Ne0xbucMk8jceDAgQPHOY4jSdGtoLN7FkVJHDhw4MBxjCMv3uWp1KwF1Q5DtL/CgQMHDhznOOqEJ4BIGkVty2qWzkWFThw4cODAcStHGyDzFtGmeNc2wJKWGA4cOHDgeJ5jttF24KAYNRiN3NUtNBw4cODAcStHEsbaAlyLuCn2tQXNOqPFgQMHDhwjjtkIQsKXtJQSmnw4Own5OHDgwIHjHEcb6pJG0azAt0ec7QcHDhw4cJzj2Gx9lmLNUri2sPjDlThw4MCB4xGOWYEvT/NalISmDfA4cODAgeMZjmLIbB0490MMm38acODAgQPHaY68ANduK9/obJyubUHhwIEDB45zHO2aFQfzhDAP4bNX8kNxEAcOHDhwrDlmIWpTzmsRN6DDUTkcOHDgwLHmSILrfisJ92xsrn0NOHDgwIHjGY5ZQbA9TFsobF9PvX8cOHDgwPECjn1YnQ3YtaMM0b8ROHDgwIHjNRxtgS8PpTlEuyscOHDgwPEkR55K3XW8TTqXNMaOt51w4MCBA8d6oGEWaJONbgLzrHGFAwcOHDhOcFg4cODAgQMHDhw4cOB42foLnz5dls8qrmIAAAAASUVORK5CYII=">
         </ul>
     
 
@@ -314,7 +314,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/mysql/">mysql</a>
+        <a class="post_tag-link" href="/tags/java/">java</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/memcached/">memcached</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/springMvc/">springMvc</a>
     </ul>
     
 
@@ -330,7 +330,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=mysql sum 返回为null&url=http://SeeMoonUp.github.io//2017/01/21/mysql/sumReturnNull/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=springMvc+token实现防止重复提交（下）&url=http://SeeMoonUp.github.io//2017/01/24/java/springMvcAvoidRepeatByMemcached/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -339,7 +339,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=mysql sum 返回为null&url=http://SeeMoonUp.github.io//2017/01/21/mysql/sumReturnNull/index.html&via=lemon" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=springMvc+token实现防止重复提交（下）&url=http://SeeMoonUp.github.io//2017/01/24/java/springMvcAvoidRepeatByMemcached/index.html&via=lemon" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -348,7 +348,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://SeeMoonUp.github.io//2017/01/21/mysql/sumReturnNull/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://SeeMoonUp.github.io//2017/01/24/java/springMvcAvoidRepeatByMemcached/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -357,7 +357,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://SeeMoonUp.github.io//2017/01/21/mysql/sumReturnNull/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://SeeMoonUp.github.io//2017/01/24/java/springMvcAvoidRepeatByMemcached/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -381,18 +381,12 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h5 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h5><ol>
-<li>使用mysql进行sum求和</li>
-<li>java使用int类型来接收</li>
-<li>当sum()where条件后没有满足的数据，返回null</li>
-<li>java转换为int的时候 报错如下：<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">org.apache.ibatis.binding.BindingException: Mapper method 'getShopTotalUseProfit' (interface cc.laowantong.dao.mapper.MallOrderMapper) attempted to return null from a method with a primitive return type (int).</div><div class="line">	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:42)</div><div class="line">	at com.sun.proxy.$Proxy78.getShopTotalUseProfit(Unknown Source)</div><div class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</div><div class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)</div><div class="line">	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)</div><div class="line">	at java.lang.reflect.Method.invoke(Method.java:498)</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h5 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h5><ol>
-<li>使用函数coalesce(arg1,arg2,…)</li>
-<li>函数解释：返回参数中第一个非空的参数</li>
-<li>最终的sql为： <code>SELECT COALESCE(SUM(total),0)  FROM test_table</code></li>
-</ol>
+        <p>上 讲到如何利用拦截器+session实现</p>
+<p>问题出现在 服务器使用tomcat集群 使用seesion来实现功能<br><img src="http://upload-images.jianshu.io/upload_images/1329783-d0fdc8d30d35b886.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="问题.png"><br>解决方案：使用memcached解决问题<br><img src="http://upload-images.jianshu.io/upload_images/1329783-a2374d03c498c03b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="方案.png"><br>上面考虑的是请求分发到不同的服务器的情况，分发到统一服务器同样适用<br>修改拦截器代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">*author:lemon</div><div class="line">*/</div><div class="line">public class AvoidDuplicateSubmissionInterceptor extends HandlerInterceptorAdapter &#123;</div><div class="line"></div><div class="line">    private static final Logger LOG = Logger.getLogger(AvoidDuplicateSubmissionInterceptor.class);</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public boolean preHandle(HttpServletRequest request,</div><div class="line">                             HttpServletResponse response, Object handler) throws Exception &#123;</div><div class="line"></div><div class="line">        //用户唯一标识  </div><div class="line">        String openId = UserCookieUtil.getOpenIdFromCookieValue(request);</div><div class="line"></div><div class="line">        int userId = UserCookieUtil.getUserIdFromCookie(request);</div><div class="line"></div><div class="line">        String memKey = &quot;&quot;;</div><div class="line">        if (StringUtils.isNotEmpty(openId)) &#123;</div><div class="line">            memKey = &quot;_mdu&quot; + openId;</div><div class="line">        &#125; else if (userId &gt; 0) &#123;</div><div class="line">            memKey = &quot;_u&quot; + userId;</div><div class="line">        &#125;</div><div class="line">        if (StringUtils.isNotEmpty(memKey)) &#123;</div><div class="line">            HandlerMethod handlerMethod = (HandlerMethod) handler;</div><div class="line">            Method method = handlerMethod.getMethod();</div><div class="line"></div><div class="line">            AvoidDuplicateSubmission annotation = method.getAnnotation(AvoidDuplicateSubmission.class);</div><div class="line">            if (annotation != null) &#123;</div><div class="line"></div><div class="line">                String memToken = MCacheUtil.get(memKey, String.class);</div><div class="line"></div><div class="line">                boolean needSaveSession = annotation.needSaveMemToken();</div><div class="line">                if (needSaveSession) &#123;</div><div class="line">                    if (StringUtils.isEmpty(memToken)) &#123;</div><div class="line">                        MCacheUtil.add(memKey, TokenProcessor.getInstance().generateToken(memKey), 5 * 60);</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                boolean needRemoveSession = annotation.needRemoveMemToken();</div><div class="line">                if (needRemoveSession) &#123;</div><div class="line">                    if (StringUtils.isEmpty(memToken)) &#123;</div><div class="line">                        LOG.warn(&quot;please don&apos;t repeat submit,[user:&quot; + memKey + &quot;,url:&quot;</div><div class="line">                                + request.getServletPath() + &quot;]&quot;);</div><div class="line">                        return false;</div><div class="line">                    &#125;</div><div class="line">                    MCacheUtil.delete(memKey);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>实现细节，详见上一篇文章<br><a href="/2017/01/24/java/springMvcAvoidRepeat/">springMvc+token实现防止重复提交（上）</a></p>
+<blockquote>
+<p>未经作者允许 请勿转载，谢谢 :)</p>
+</blockquote>
 
     
 
@@ -421,9 +415,9 @@
 <div id="comments">
     <!-- 多说评论框 start -->
     <div class="ds-thread"
-        data-thread-key="2017/01/21/mysql/sumReturnNull/"
-        data-url="http://SeeMoonUp.github.io/2017/01/21/mysql/sumReturnNull/"
-        data-title="mysql sum 返回为null">
+        data-thread-key="2017/01/24/java/springMvcAvoidRepeatByMemcached/"
+        data-url="http://SeeMoonUp.github.io/2017/01/24/java/springMvcAvoidRepeatByMemcached/"
+        data-title="springMvc+token实现防止重复提交（下）">
     </div>
     <!-- 多说评论框 end -->
 </div>
@@ -439,21 +433,13 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/01/22/java/jstl/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2017/01/21/stone/Qingwen/" id="post_nav-older" class="next-content">
+        <a href="/2017/01/24/java/springMvcAvoidRepeat/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
