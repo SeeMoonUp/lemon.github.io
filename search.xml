@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title><![CDATA[开发中遇到的float double精度问题]]></title>
+      <url>http://SeeMoonUp.github.io/2017/02/07/java/floatConvertInt/</url>
+      <content type="html"><![CDATA[<h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>javascript java中小数进行算术运算存在精度问题</p>
+<ol>
+<li><p>在js中的体现</p>
+<p> <code>2.32 * 100 = 231.99999999999997</code></p>
+</li>
+<li>在java中的体现 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">2.32d * 100 = 231.99999999999997</div><div class="line">0.15f * 100 = 15.000001</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>说明：js中使用的为双精度，java 无论单精度或者双精度都无法避免这个问题</p>
+</blockquote>
+<h4 id="导致问题的原因"><a href="#导致问题的原因" class="headerlink" title="导致问题的原因"></a>导致问题的原因</h4><ol>
+<li>关于二进制存储的知识<a href="http://www.cnblogs.com/helloaworld/p/5419017.html" target="_blank" rel="external">点击查看</a></li>
+<li>关于十进制如何转换为二进制<a href="http://blog.csdn.net/xingtanzjr/article/details/50803832" target="_blank" rel="external">点击查看</a></li>
+</ol>
+<p>ps: 第一篇博文中存在一点计算问题 即8.25，用二进制的科学计数法表示为:1.00001*2^3,原文作者少写一个0</p>
+<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><p>对于这个现象 目前没有解决方案，只能根据自己的业务需求，来进行灵活的变通</p>
+<p>作者在进行商城设计的时候遇到的坑<br>后台可以修改订单的价格，所以需要输入一个小数保留两位有效数字即单位为元（因为开发给别人使用所以展示为元更为直观）<br>发现精度问题后，不再考虑工作人员体验问题，修改为int 避免了这个问题<br>数据库中的字段也都存储分为单位 避免精度问题</p>
+<blockquote>
+<p>未经作者允许 请勿转载，谢谢 :)</p>
+</blockquote>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[springMvc+token实现防止重复提交（下）]]></title>
       <url>http://SeeMoonUp.github.io/2017/01/24/java/springMvcAvoidRepeatByMemcached/</url>
       <content type="html"><![CDATA[<p>上 讲到如何利用拦截器+session实现</p>
