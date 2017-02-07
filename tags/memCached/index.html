@@ -10,7 +10,7 @@
     
     <title>
         
-            标签: memcached | 
+            标签: memCached | 
         
         lemon blog
     </title>
@@ -48,7 +48,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://SeeMoonUp.github.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="标签: memcached | lemon blog">
+    <meta property="og:title" content="标签: memCached | lemon blog">
     <meta property="og:description" content="website java lemon">
 
     <!--[if lte IE 9]>
@@ -218,18 +218,22 @@
     
 
         <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/01/24/java/springMvcAvoidRepeatByMemcached/">springMvc+token实现防止重复提交（下）</a></p>
+        <p class="article-headline-p"><a href="/2017/01/22/java/redpacket/">红包秒杀活动</a></p>
     </div>
 
     <!-- Post Excerpt -->
     <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
         
-            上 讲到如何利用拦截器+session实现
-问题出现在 服务器使用tomcat集群 使用seesion来实现功能
+            并发抢红包算法及实现
+
+如何分配红包
+如何控制抢红包的并发（类似秒杀系统）
+
+...
         
         &nbsp;&nbsp;&nbsp;
         <span>
-            <a href="/2017/01/24/java/springMvcAvoidRepeatByMemcached/" target="_self">继续阅读</a>
+            <a href="/2017/01/22/java/redpacket/" target="_self">继续阅读</a>
         </span>
     </div>
     <!-- Post_entry Info-->
@@ -241,20 +245,20 @@
             </div>
             <div>
                 <strong>lemon</strong>
-                <span>1月 24, 2017</span>
+                <span>1月 22, 2017</span>
             </div>
         </div>
         <div id="post_entry-right-info">
             <!-- Category -->
             <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/java/">java</a>, <a class="post_category-link" href="/categories/java/springMvc/">springMvc</a>, <a class="post_category-link" href="/categories/java/springMvc/memcached/">memcached</a>
+                <a class="post_category-link" href="/categories/java/">java</a>
             </span>
 
             
                 <!-- Comment Number -->
                 &nbsp;|&nbsp;
                 <span class="post_entry-comment" >
-                        <span class="ds-thread-count" data-thread-key="2017/01/24/java/springMvcAvoidRepeatByMemcached/" data-count-type="comments"></span>
+                        <span class="ds-thread-count" data-thread-key="2017/01/22/java/redpacket/" data-count-type="comments"></span>
                 </span>
             
 
@@ -709,6 +713,21 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Window Load-->
 <script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+
+                </main>
+            </div>
+        </body>
+    
+</html>
+
     $(window).load(function() {
         // Post_Toc parent position fixed
         $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
