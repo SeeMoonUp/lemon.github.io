@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title><![CDATA[对于数字类型格式化（js,java,vue）以现金格式为例（保留两位小数）]]></title>
+      <url>http://SeeMoonUp.github.io/2017/03/07/java/format/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>场景描述：对商品进行展示价格 统一展示格式为小数点后两位 同时考虑精度的问题</p>
+</blockquote>
+<p>精度问题见<a href="/2017/01/24/java/floatCovertInt/">开发中遇到的float double精度问题</a></p>
+<hr>
+<p>.解决方案：</p>
+<h4 id="第一种javascript的解决方式："><a href="#第一种javascript的解决方式：" class="headerlink" title="第一种javascript的解决方式："></a>第一种javascript的解决方式：</h4><p>在一些要求精度没有那么准确的场景下，我们可以直接通过Number.prototype.toFixed()来实现保留小数点两位这样的需求。</p>
+<p>使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var num = 123.45678</div><div class="line">console.log(num.toFixed(2)) //123.46</div><div class="line"></div><div class="line">var num2 = 12</div><div class="line">console.log(num2.toFixed(2)) //12.00</div></pre></td></tr></table></figure></p>
+<p>不过如果恰好，数字是一个整数，那么就会输出12.00这样的格式，我们常常对于后面为00的整数要求直接输出整数即可。因此不妨这样写。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var num = 123.45678</div><div class="line">console.log(num.toFixed(2).replace(&apos;.00&apos;, &apos;&apos;)) //123.46</div><div class="line"></div><div class="line">var num2 = 12</div><div class="line">console.log(num2.toFixed(2).replace(&apos;.00&apos;, &apos;&apos;)) //12</div></pre></td></tr></table></figure>
+<p>参考地址：<a href="http://coffeedeveloper.com/thinking-about-the-js-format/" target="_blank" rel="external">http://coffeedeveloper.com/thinking-about-the-js-format/</a></p>
+<hr>
+<h4 id="第二种服务端的解决（java）"><a href="#第二种服务端的解决（java）" class="headerlink" title="第二种服务端的解决（java）"></a>第二种服务端的解决（java）</h4><p>使用NumberFormat来解决</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 将任意类型的数字 转换为金钱类型（保留小数后两位）</div><div class="line"> * @param source</div><div class="line"> * @param &lt;T&gt;</div><div class="line"> * @return</div><div class="line"> */</div><div class="line">public static &lt;T&gt; String convert2Money(T source)&#123;</div><div class="line"></div><div class="line">    //判断是否为数字类型</div><div class="line">    if (!NumberUtils.isNumber(String.valueOf(source))) &#123;</div><div class="line">        throw new RuntimeException(&quot;convert2MoneyException param only allow Number or String but param is :&quot; + mapper.toJson(source));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    NumberFormat nf = NumberFormat.getInstance();</div><div class="line">    nf.setMinimumFractionDigits(2);//设置小数点后保留的位数</div><div class="line">    nf.setMaximumFractionDigits(2);//最大保留位</div><div class="line">    nf.setGroupingUsed(false);//是否保留千分位</div><div class="line"></div><div class="line">    return nf.format(Double.valueOf(source.toString()));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h4 id="第三种VUE-js框架-的解决方案"><a href="#第三种VUE-js框架-的解决方案" class="headerlink" title="第三种VUE(js框架)的解决方案"></a>第三种VUE(js框架)的解决方案</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">methods: &#123;</div><div class="line">    convert2Money : function (price) &#123;</div><div class="line">        if (isNaN(price)) &#123;</div><div class="line">            return price;</div><div class="line">        &#125;</div><div class="line">        return price.toFixed(2);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>参考地址：<a href="https://cn.vuejs.org/v2/guide/computed.html" target="_blank" rel="external">https://cn.vuejs.org/v2/guide/computed.html</a></p>
+<blockquote>
+<p>结语：对于前端和服务端 分别进行了简单的处理 进行格式化， 如果有好的解决方案，欢迎交流</p>
+<p>未经作者允许 请勿转载，谢谢 :)</p>
+</blockquote>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[开发中遇到的float double精度问题]]></title>
       <url>http://SeeMoonUp.github.io/2017/02/07/java/floatConvertInt/</url>
       <content type="html"><![CDATA[<h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>javascript java中小数进行算术运算存在精度问题</p>

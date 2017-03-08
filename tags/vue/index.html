@@ -10,7 +10,7 @@
     
     <title>
         
-            jstl el js灵活使用（三种方案处理页面逻辑） | 
+            标签: vue | 
         
         lemon blog
     </title>
@@ -48,7 +48,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://SeeMoonUp.github.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="jstl el js灵活使用（三种方案处理页面逻辑） | lemon blog">
+    <meta property="og:title" content="标签: vue | lemon blog">
     <meta property="og:description" content="website java lemon">
 
     <!--[if lte IE 9]>
@@ -200,278 +200,96 @@
                         </button>
                     
 
-                    <!-- Post TOC -->
+                    <!-- Index Module -->
+<div class="material-index mdl-grid">
+    
+    <div class="locate-thumbnail-symbol"></div>
 
     
-    <!-- Back Button -->
-    <!--
-    <div class="material-back" id="backhome-div" tabindex="0">
-        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
-           href="#" onclick="window.history.back();return false;"
-           target="_self"
-           role="button"
-           data-upgraded=",MaterialButton,MaterialRipple">
-            <i class="material-icons" role="presentation">arrow_back</i>
-            <span class="mdl-button__ripple-container">
-                <span class="mdl-ripple"></span>
-            </span>
-        </a>
-    </div>
-    -->
-
-    <!-- Left aligned menu below button -->
-    <button id="post-toc-trigger-btn"
-        class="mdl-button mdl-js-button mdl-button--icon">
-        <i class="material-icons">format_list_numbered</i>
-    </button>
-
-    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第一种方案：jstl"><span class="post-toc-number">1.</span> <span class="post-toc-text">第一种方案：jstl</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第二种方案：el表达式-三目运算符"><span class="post-toc-number">2.</span> <span class="post-toc-text">第二种方案：el表达式+三目运算符</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第三种方案：将逻辑转移到js文件当中-将videoId传入js中进行处理判断"><span class="post-toc-number">3.</span> <span class="post-toc-text">第三种方案：将逻辑转移到js文件当中 将videoId传入js中进行处理判断**</span></a></li></ol>
-
-        <!--
-        <li class="mdl-menu__item">
-            Some Action
-        </li>
-        -->
-    </ul>
-
-
-
-
-<!-- Layouts -->
-
-    <!-- Post Module -->
-    <div class="material-post_container">
-
-        <div class="material-post mdl-grid">
-            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
-
-                <!-- Post Header(Thumbnail & Title) -->
-                
-    <!-- Paradox Post Header -->
+        
+            <!-- Paradox Thumbnail -->
+            <div class="post_entry-module mdl-card mdl-cell mdl-cell--12-col fade out">
+    <!-- Post Thumbnail -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-            <script>
-    var randomNum = Math.floor(Math.random() * 19 + 1);
-
-    $('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')');
-</script>
-
         
     
-            <p class="article-headline-p">
-                jstl el js灵活使用（三种方案处理页面逻辑）
-            </p>
-        </div>
 
-
-
-
-
-                
-                    <!-- Paradox Post Info -->
-                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
-
-    <!-- Author Avatar -->
-    <div id="author-avatar">
-        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
-    </div>
-    <!-- Author Name & Date -->
-    <div>
-        <strong>lemon</strong>
-        <span>1月 22, 2017</span>
+        <!-- Post Title -->
+        <p class="article-headline-p"><a href="/2017/03/07/java/format/">对于数字类型格式化（js,java,vue）以现金格式为例（保留两位小数）</a></p>
     </div>
 
-    <div class="section-spacer"></div>
+    <!-- Post Excerpt -->
+    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
+        
+            
+场景描述：对商品进行展示价格 统一展示格式为小数点后两位 同时考虑精度的问题
 
-    <!-- Favorite -->
-    <!--
-        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
-            <i class="material-icons" role="presentation">favorite</i>
-            <span class="visuallyhidden">favorites</span>
-        </button>
-    -->
-
-    <!-- Qrcode -->
-    
-        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-            <i class="material-icons" role="presentation">devices other</i>
-            <span class="visuallyhidden">devices other</span>
-        </button>
-        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
-            <li class="mdl-menu__item">在其它设备中阅读本文章</li>
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACaklEQVR42u3aQXLCMAwFUO5/6fYAnYYvWRGUvqwYJgl+Xtjiy4+vj74eeHh4eHh4eHh4b8Z7xFf1qZ/3//bsz3uOxoaHh4e3wnuy1F7e00NGS3xrbHh4eHibvGTJvv6cLPTXUzOwneDh4eG9Je+3AfVKYTw8PLz/w7sufPNtAA8PD+/v8pI//NeDTr6vlumrWQseHh5ezKuWv5ufV/t7eHh4eAGvfKTpcrk/uSd5qnzoCg8PD+8GXr4QJ4X4VOBbHQ8eHh7eJi+PGAo/cHzwtDcdeHh4eJu8HrLavqoW3714Fw8PD+9uXr7c50cHqgV38p6jfwx4eHh4o7x8ge6V0dFSXowkyik1Hh4e3igvD2qrRwryWLa3wZRPRuDh4eGN8nrhaTWYyL/vBbh4eHh4m7xqc6u3uFc3iVtiXDw8PLyhBlheIiclb1L+nlCflP54eHh4N/OqgWk1pDgBVOMMPDw8vB1eddDViLYa9SYNtmZJjYeHhzfKy68keshDhPPtJ9oY8PDw8EZ5vfZ8MqDzNlv+PR4eHt4+L1nK86bXyXvOD2bh4eHh7fCmItreZpBMTWFa8fDw8BZ5s4Nutq8ODnLh4eHhvYpXCEyLd+axRe/NeHh4eDu8XgMsb3FVo+FetIGHh4e3yaserko2leuiPB9ucxLx8PDwVnj5sYCTBtXUVA4cusLDw8Mb4iWDzoOJfBKrU3DU38PDw8N7KW/qKFX+htWNAQ8PD2+UVw1tk/cksChoxsPDw1vkJSXv7OCq0cPtMS4eHh7eDQ2wanQbNfuL5Xg5jMDDw8Mb5X3ehYeHh4eHh4eH9wbXNwekPtoNq9vgAAAAAElFTkSuQmCC">
-        </ul>
-    
-
-    <!-- Tags (bookmark) -->
-    
-    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-        <i class="material-icons" role="presentation">bookmark</i>
-        <span class="visuallyhidden">bookmark</span>
-    </button>
-    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
-        <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/fe/">fe</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/java/">java</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/javascript/">javascript</a>
-    </ul>
-    
-
-    <!-- Share -->
-    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-    <i class="material-icons" role="presentation">share</i>
-    <span class="visuallyhidden">share</span>
-</button>
-<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
-    
-
-    
-
-    <!-- Share Weibo -->
-    
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=jstl el js灵活使用（三种方案处理页面逻辑）&url=http://SeeMoonUp.github.io//2017/01/22/java/jstl/index.html&pic=&searchPic=false&style=simple" target="_blank">
-            <li class="mdl-menu__item">
-                分享到微博
-            </li>
-        </a>
-    
-
-    <!-- Share Twitter -->
-    
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=jstl el js灵活使用（三种方案处理页面逻辑）&url=http://SeeMoonUp.github.io//2017/01/22/java/jstl/index.html&via=lemon" target="_blank">
-            <li class="mdl-menu__item">
-                分享到 Twitter
-            </li>
-        </a>
-    
-
-    <!-- Share Facebook -->
-    
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://SeeMoonUp.github.io//2017/01/22/java/jstl/index.html" target="_blank">
-            <li class="mdl-menu__item">
-                分享到 Facebook
-            </li>
-        </a>
-    
-
-    <!-- Share Google+ -->
-    
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://SeeMoonUp.github.io//2017/01/22/java/jstl/index.html" target="_blank">
-            <li class="mdl-menu__item">
-                分享到 Google+
-            </li>
-        </a>
-    
-
-    <!-- Share LinkedIn -->
-    
-
-    <!-- Share QQ -->
-    
-
-    <!-- Share Telegram -->
-    
-</ul>
-
-</div>
-
-                
-
-                <!-- Post Content -->
-                <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
-    
-        <blockquote>
-<p>场景描述：根据后台传入的值（value是否大于0）决定是否跳转（跳转地址vid-<em>）<br>备注：\</em>为后台传入的value</p>
-</blockquote>
-<hr>
-<p>.解决方案：</p>
-<h4 id="第一种方案：jstl"><a href="#第一种方案：jstl" class="headerlink" title="第一种方案：jstl"></a>第一种方案：jstl</h4><p>使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;c:choose&gt;</div><div class="line">  &lt;c:when test=&quot;$&#123;value &gt; 0&#125;&quot;&gt;</div><div class="line">    &lt;a href=&quot;vid-$&#123;value&#125;&quot; class=&quot;photo&quot; target=&quot;_blank&quot;&gt;</div><div class="line">    href</div><div class="line">    &lt;/a&gt;&lt;/c:when&gt;</div><div class="line">  &lt;c:otherwise&gt;</div><div class="line">    &lt;a href=&quot;javascript:void(0);&quot; class=&quot;photo&quot; target=&quot;_blank&quot;&gt;</div><div class="line">    href</div><div class="line">  &lt;/c:otherwise&gt;</div><div class="line">&lt;/c:choose&gt;</div></pre></td></tr></table></figure></p>
-<p>使用jstl表达式来完成</p>
-<hr>
-<h4 id="第二种方案：el表达式-三目运算符"><a href="#第二种方案：el表达式-三目运算符" class="headerlink" title="第二种方案：el表达式+三目运算符"></a>第二种方案：el表达式+三目运算符</h4><p>很显然使用第一种方式代码很臃肿，代码量太高<br>所以考虑能否使用el表达式中的三目运算符来解决这个问题<br>代码如下<br><code>&lt;a href=&quot;${value &gt; 0 ? &#39;vid-&#39;+value : &#39;&#39;}; &quot;</code></p>
-<p>发现会报错 原因是三目运算符中不支持字符串的加减，只支持数字间的逻辑运算<br>这样就比较尴尬了；</p>
-<hr>
-<h4 id="第三种方案：将逻辑转移到js文件当中-将videoId传入js中进行处理判断"><a href="#第三种方案：将逻辑转移到js文件当中-将videoId传入js中进行处理判断" class="headerlink" title="第三种方案：将逻辑转移到js文件当中 将videoId传入js中进行处理判断**"></a>第三种方案：将逻辑转移到js文件当中 将videoId传入js中进行处理判断**</h4><p>js代码如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function redirectUrl(value)&#123;</div><div class="line">  if(value &gt; 0) &#123;</div><div class="line">    window.location.href = &quot;vid-&quot;+value;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>jsp代码如下<br><code>&lt;a href=&quot;javascript:redirectUrl(${ value}); &quot;</code></p>
-<p>使用这种方案就解决了第二种方法不能够处理的问题</p>
-<blockquote>
-<p>总结：有时候思路转变一下 就会得到一种比较合理的解决方案</p>
-<p>未经作者允许 请勿转载，谢谢 :)</p>
-</blockquote>
-
-    
-
-    
-</div>
-
-
-                
-
-                <!-- Post Comments -->
-                
-                    
-    <!-- 使用多说评论 -->
-    <link rel="stylesheet" href="/css/duoshuo.min.css">
-<style>
-    #ds-thread #ds-reset .ds-post-button{
-        background-color: #0097A7 !important;
-    }
-    #ds-wrapper #ds-reset .ds-icons-32{
-        background-color: #0097A7 !important;
-    }
-    #ds-reset .ds-highlight {
-        color: #0097A7 !important;
-    }
-</style>
-<div id="comments">
-    <!-- 多说评论框 start -->
-    <div class="ds-thread"
-        data-thread-key="2017/01/22/java/jstl/"
-        data-url="http://SeeMoonUp.github.io/2017/01/22/java/jstl/"
-        data-title="jstl el js灵活使用（三种方案处理页面逻辑）">
+精...
+        
+        &nbsp;&nbsp;&nbsp;
+        <span>
+            <a href="/2017/03/07/java/format/" target="_self">继续阅读</a>
+        </span>
     </div>
-    <!-- 多说评论框 end -->
-</div>
-
-
-
-
-
-                
+    <!-- Post_entry Info-->
+    <div id="post_entry-info">
+        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
+            <!-- Author Avatar -->
+            <div id="author-avatar">
+                <img src="/img/avatar.png" width="44px" height="44px" alt="lemon's avatar">
             </div>
+            <div>
+                <strong>lemon</strong>
+                <span>3月 07, 2017</span>
+            </div>
+        </div>
+        <div id="post_entry-right-info">
+            <!-- Category -->
+            <span class="post_entry-category">
+                <a class="post_category-link" href="/categories/java/">java</a>
+            </span>
 
-            <!-- Post Prev & Next Nav -->
-            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
-    <!-- Prev Nav -->
-    
-        <a href="/2017/01/22/fe/wechatScheme/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
+            
+                <!-- Comment Number -->
+                &nbsp;|&nbsp;
+                <span class="post_entry-comment" >
+                        <span class="ds-thread-count" data-thread-key="2017/03/07/java/format/" data-count-type="comments"></span>
+                </span>
+            
 
-    <!-- Section Spacer -->
-    <div class="section-spacer"></div>
-
-    <!-- Next Nav -->
-    
-        <a href="/2017/01/21/mysql/sumReturnNull/" id="post_nav-older" class="next-content">
-            旧篇
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_forward</i>
-            </button>
-        </a>
-    
-</nav>
-
+            <!-- Post Views -->
+            <span class="post_entry-views">
+            </span>
         </div>
     </div>
+</div>
 
+        
+        
+    
+
+    
+
+    
+        <script>
+    var randomNum;
+
+    var locatePost = $('.locate-thumbnail-symbol').next();
+    for(var i = 0; i < 10; i++) {
+        randomNum = Math.floor(Math.random() * 19 + 1);
+
+        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
+        locatePost.children('.post_thumbnail-random').css('background-image', 'url(' + '/img/random/material-' + randomNum + '.png' + ')')
+
+        locatePost = locatePost.next();
+    }
+</script>
+
+    
+</div>
 
 
                     
@@ -643,14 +461,6 @@ It will not impact the appearance and can give developers a lot of support :)
 </aside>
 
                     
-
-                    
-                        <!-- Footer Top Button -->
-                        <div class="toTop-wrap">
-    <a href="#top" class="toTop">
-        <i class="material-icons footer_top-i">expand_less</i>
-    </a>
-</div>
 
                     
 
