@@ -4,6 +4,222 @@
   
     
     <entry>
+      <title><![CDATA[设计模式-策略模式（strategy pattern）]]></title>
+      <url>http://SeeMoonUp.github.io/2017/03/25/Design%20Pattern/StrategyPattern/</url>
+      <content type="html"><![CDATA[<h4 id="需求描述："><a href="#需求描述：" class="headerlink" title="需求描述："></a>需求描述：</h4><ol>
+<li>鸭子类（duck）</li>
+<li>多个品种的鸭子（红头鸭，绿毛鸭，玩具鸭）</li>
+<li>多种行为动作（呱呱叫，飞翔，外观展示）</li>
+</ol>
+<p>如何设计呢？</p>
+<h4 id="普通的设计模式："><a href="#普通的设计模式：" class="headerlink" title="普通的设计模式："></a>普通的设计模式：</h4><ol>
+<li><p>duck为父类，定义了呱呱叫 飞翔 外观展示等方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public class Duck &#123;</div><div class="line">    public String guagua()&#123;</div><div class="line">        //呱呱叫</div><div class="line">    &#125;</div><div class="line">    public String fly()&#123;</div><div class="line">        //飞翔</div><div class="line">    &#125;</div><div class="line">    public String display()&#123;</div><div class="line">        //外观展示</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>多个品种的鸭子 设计为子类 继承 duck</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public class RedHeadDuck extend Duck&#123;</div><div class="line">    //覆写父类的外观方法</div><div class="line">    public String display()&#123;</div><div class="line">        //我是红头鸭</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这么设计问题出现了，所有的鸭子都具有了飞翔和呱呱叫的能力，但是玩具鸭并不具有飞翔的能力</p>
+<h4 id="修改设计："><a href="#修改设计：" class="headerlink" title="修改设计："></a>修改设计：</h4><ol>
+<li><p>duck仍为父类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public class Duck &#123;</div><div class="line">    public String guagua()&#123;</div><div class="line">        //呱呱叫</div><div class="line">    &#125;</div><div class="line">    public String display()&#123;</div><div class="line">        //外观展示</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>设计接口 flyBehavior</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public interface FlyBehavior &#123;</div><div class="line">    fly();</div><div class="line">&#125;</div><div class="line">public class FlyDuck extend Duck implements FlyBehavior &#123;</div><div class="line">    public String fly()&#123;</div><div class="line">        //我会飞翔</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">public class ToyDuck extend Duck &#123;</div><div class="line">    public String display() &#123;</div><div class="line">        //我是一个玩具鸭</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>将需要实现飞翔的子类实现接口flyBehavior<br>这样只需要玩具鸭不去实现接口就解决了飞翔的问题</p>
+<p>但是 问题来了 如果说飞翔又分为 借力飞翔 迎风飞翔 等不同的飞翔方式<br>实现接口的子类需要 不同的实现方式，代码更多 而且不能够复用</p>
+<h4 id="升级设计"><a href="#升级设计" class="headerlink" title="升级设计"></a>升级设计</h4><ol>
+<li>duck为父类</li>
+<li>设计接口 flyBehavior</li>
+<li>设计行为类 实现 flyBehavior</li>
+<li>duck 中引用 行为类<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">public class Duck &#123;</div><div class="line">    private FlyBehavior flyBehavior;</div><div class="line">    public setFlyBehavior(FlyBehavior f)&#123;</div><div class="line">        this.flyBehavior = f;</div><div class="line">    &#125;</div><div class="line">    public String fly()&#123;</div><div class="line">        return flyBehavior.fly();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">public class NoFly implements FlyBehavior &#123;</div><div class="line">    public String fly () &#123;</div><div class="line">        //不能飞翔</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">public class CanFly implements FlyBehavior &#123;</div><div class="line">    public String fly () &#123;</div><div class="line">        //可以飞翔</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">//还可以定义多种飞翔方式。。。。</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这样设计就可以很灵活的修改类</p>
+<blockquote>
+<p>结语：策略模式（strategy pattern） 将行为类 即易改变的东西抽取出来 多用组合 少用继承 针对接口编程 不要针对实现编程<br><a href="https://seemoonup.github.io/2017/02/07/java/floatConvertInt/">原文地址</a><br>未经作者允许 请勿转载，谢谢 :)</p>
+</blockquote>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[微信浏览器调起App]]></title>
+      <url>http://SeeMoonUp.github.io/2017/03/21/error&amp;exception/symbol/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>问题：/lwt/build/hawaii-src/src/main/java/cc/laowantong/hawaii/web/controller/MallController.java:[710,28] error: cannot find symbol<br>    [ERROR] variable mallOrder of type MallOrder</p>
+<p>总结:</p>
+<p>未经作者允许 请勿转载，谢谢 :)</p>
+</blockquote>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[开发中遇到的float double精度问题]]></title>
+      <url>http://SeeMoonUp.github.io/2017/03/20/java/SingleSignOn/</url>
+      <content type="html"><![CDATA[<h4 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h4><p>统一登录</p>
+<ol>
+<li>在js中的体现<br> <code>2.32 * 100 = 231.99999999999997</code></li>
+<li>在java中的体现 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">2.32d * 100 = 231.99999999999997</div><div class="line">0.15f * 100 = 15.000001</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>说明：js中使用的为双精度，java 无论单精度或者双精度都无法避免这个问题</p>
+</blockquote>
+<h4 id="导致问题的原因"><a href="#导致问题的原因" class="headerlink" title="导致问题的原因"></a>导致问题的原因</h4><ol>
+<li>关于二进制存储的知识<a href="http://www.cnblogs.com/helloaworld/p/5419017.html" target="_blank" rel="external">点击查看</a></li>
+<li>关于十进制如何转换为二进制<a href="http://blog.csdn.net/xingtanzjr/article/details/50803832" target="_blank" rel="external">点击查看</a></li>
+</ol>
+<p>ps: 第一篇博文中存在一点计算问题 即8.25，用二进制的科学计数法表示为:1.00001*2^3,原文作者少写一个0</p>
+<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><p>对于这个现象 目前没有解决方案，只能根据自己的业务需求，来进行灵活的变通</p>
+<p>作者在进行商城设计的时候遇到的坑<br>后台可以修改订单的价格，所以需要输入一个小数保留两位有效数字即单位为元（因为开发给别人使用所以展示为元更为直观）<br>发现精度问题后，不再考虑工作人员体验问题，修改为int 避免了这个问题<br>数据库中的字段也都存储分为单位 避免精度问题</p>
+<blockquote>
+<p><a href="https://seemoonup.github.io/2017/02/07/java/floatConvertInt/">原文地址</a><br>未经作者允许 请勿转载，谢谢 :)</p>
+</blockquote>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[电商订单系统中订单状态有哪些？]]></title>
+      <url>http://SeeMoonUp.github.io/2017/03/15/java/MallOrderSplit/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>场景描述：电商系统开发需要的状态机</p>
+</blockquote>
+<p>拆单分为电商平台的前端拆单与商家后端ERP拆单，具体的拆单规则应该是属于需求文档级别了，你懂得！ 而且也跟你自身的系统架构有关，所以我在这大致说下方向，给点提示。</p>
+<p>一、电商平台前端拆单：（按业务分，让顾客知晓是分开发货）</p>
+<p>1、生成订单前：不同业务类型的订单不允许同时结算，通过交易流程拆单（例如：海外购订单、国内商品订单、充值等）；</p>
+<p>2、生成订单前： 促销相关，优惠券、满减等需在交易拆单前按相应规则计算；</p>
+<p>3、生成订单后：不同商家或库房的订单在结算后拆分成多个子订单发货；（例如：京东自营的商品，但是在不同库房存放； 购买的商品由多个商家发货）</p>
+<p>4、涉及金额与优惠的均摊；例如满减、满折、京东支付、等整单级别优惠按均摊率分摊到单个商品上。方便后续退款退积分； （这在很多订单数据结构中是难点，例如多种方式支付时，如何退款；各种优惠如何分摊记录）</p>
+<p>二、商家后端ERP拆单：（按包裹分，往往是因为缺货或分仓发货导致）</p>
+<p>1、穷举业务场景，什么情况下需要拆单？ 按业务去分析拆单规则</p>
+<p>一个订单中部分商品缺货；<br>一个订单中存在部分预售商品；<br>一个订单发往不同地址；<br>一个订单的商品在不同的库房发货；<br>一个订单中商品因为避关税问题需要拆单；<br>2、后端促销规则，注意是拆单前计算还是拆单后计算，最好有参数设置；</p>
+<p>一个订单中商品因为避关税问题需要拆单；<br>涉及金额与优惠的均摊；例如满减、满折、京东支付、等整单级别优惠按均摊率分摊到单个商品上。方便后续退款退积分；<br>3、拆分后金额分摊、注意字段属性的取值</p>
+<p>涉及金额与优惠的均摊；例如满减、满折、京东支付、等整单级别优惠按均摊率分摊到单个商品上。方便后续退款退积分；<br>一个商品多件时，拆多个订单时，金额和优惠的取值；<br>多个商品拆多个订单时金额和用户基本信息的取值；<br>4、拆单后，如何反馈给订单相关系统？</p>
+<p>电商平台：线上是一个订单，但是因为后端拆单后，变成多个订单发货，如何让顾客知晓？（淘宝目前支持按商品发货，但是有些平台还不支持）<br>财务对账：财务系统中，如何进行对账，例如 支付宝是一条记录，但是系统中是两笔订单；<br>物流系统：一个订单，多个包裹，每个包裹不同的物流记录反馈；<br>PS:既然拆分，就需要考虑到合并，或者多次拆分合并后，要保证原订单数据结构不丢失、不影响财务对账。</p>
+<p>###电商系统<br>面向用户：企业，供应商，分销商，用户</p>
+<p>拆分需求：多供应商，多快递模板<br>拆分时间：用户下单拆分为包裹状态<br>拆分方案：</p>
+<ol>
+<li>获取到所有的商品信息（商品规格，数量）</li>
+<li>按照供应商拆分</li>
+<li>按照快递模板拆分<br>拆分结构<br>a. 总订单<br>b. 包裹订单<br>c. 商品订单</li>
+</ol>
+<blockquote>
+<p>结语：</p>
+<p>未经作者允许 请勿转载，谢谢 :)</p>
+</blockquote>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[电商订单系统中订单状态有哪些？]]></title>
+      <url>http://SeeMoonUp.github.io/2017/03/15/java/MallOrderStatus/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>场景描述：电商系统开发需要的状态机</p>
+</blockquote>
+<p>从订单状态设计目的和存在价值去分析和理解它背后设计机制：维度及维度颗粒度大小。</p>
+<p>1、正向和逆向流程维度（各选取主要状态）</p>
+<p>正向订单：已锁定、已确认、已付款、已发货、已结算、已完成、已取消等</p>
+<p>正向预售订单：预付款已付未确认、已确认未付尾款（变更）</p>
+<p>正向问题单：未确认、未锁定、未发货、部分付款、未付款等</p>
+<p>逆向退单：待结算、未收到货、未入库、质检不通过、部分收货、已取消、客户已收货等</p>
+<p>逆向换单：完成、已结算、客服已收货等</p>
+<p>2、服务对象维度</p>
+<p>顾客/用户：待付款、待发货、待收货、待评价、买家已付款、交易成功/失败、卖家已发货、退款成功、交易关闭、</p>
+<p>ERP等其他交互系统：已锁定、已确认、已分仓、已分配、已出库、已收货、已完成等</p>
+<p>客服：</p>
+<p>等待买家付款、待付款和待发货订单、退款中的订单、定金已付、买家已付款、</p>
+<p>卖家已发货、交易成功、交易失败、异常订单</p>
+<h4 id="目前系统的状态机-不支持购物车"><a href="#目前系统的状态机-不支持购物车" class="headerlink" title="目前系统的状态机(不支持购物车)"></a>目前系统的状态机(不支持购物车)</h4><p>支付状态</p>
+<blockquote>
+<p>  WAIT_PAY(1,”待支付”),</p>
+<pre><code>PAY_SUCCESS(2, &quot;支付成功&quot;),
+</code></pre></blockquote>
+<p>订单状态</p>
+<blockquote>
+<pre><code>WAIT_REFUND(10, &quot;退款中&quot;),
+
+REFUNDED(11,&quot;退款成功&quot;),
+
+REFUND_ERROR(12,&quot;退款失败&quot;),
+</code></pre></blockquote>
+<p>第三方下单状态</p>
+<blockquote>
+<pre><code>WAIT_CONFIRM(15, &quot;待发货&quot;), //等待确认
+
+CONFIRMED(16, &quot;待发货&quot;),    //已确认
+</code></pre></blockquote>
+<p>状态扭转</p>
+<blockquote>
+<pre><code>WAIT_DELIVER(21,&quot;待发货&quot;),
+
+DELIVERED(22,&quot;已发货&quot;),
+
+RECEIVED(23,&quot;已收货&quot;),
+
+APPLY_RETURN_GOOD(31, &quot;退货中&quot;),
+
+RETURN_PRODUCT_SUCCESS(32, &quot;退货成功&quot;),
+
+CANCEL(41, &quot;已取消&quot;)
+</code></pre></blockquote>
+<p>兼容退货流程（暂不开发）</p>
+<blockquote>
+<p>同意退款流程/等待买家寄回物品</p>
+<p>已寄回待入库/等待卖家签收</p>
+<p>已入库 / 卖家已签收</p>
+<p>退货成功</p>
+</blockquote>
+<h3 id="购物车状态机模型"><a href="#购物车状态机模型" class="headerlink" title="购物车状态机模型"></a>购物车状态机模型</h3><p>A 订单</p>
+<blockquote>
+<p>待付款</p>
+<p>待发货  contain 待发货</p>
+<p>已发货 全部是已发货 已收货 退款 退货</p>
+<p>已收货 全部已收货</p>
+<p>退款中</p>
+<p>退款成功</p>
+<p>退款失败</p>
+<p>退货中</p>
+<p>退货成功</p>
+<p>退货失败</p>
+<p>已取消</p>
+</blockquote>
+<p>B 订单（不存入库状态）</p>
+<blockquote>
+<p>待付款</p>
+<p>待发货（未确认、已确认）</p>
+<p>已发货</p>
+<p>已收货</p>
+<p>退款中</p>
+<p>退款成功</p>
+<p>退款失败</p>
+<p>退货中</p>
+<p>退货成功</p>
+<p>退货失败</p>
+<p>已取消</p>
+</blockquote>
+<p>C 订单</p>
+<blockquote>
+<p>待付款</p>
+<p>待发货（未确认、已确认）</p>
+<p>已发货</p>
+<p>已收货</p>
+<p>退款中</p>
+<p>退款成功</p>
+<p>退款失败</p>
+<p>退货中</p>
+<p>退货成功</p>
+<p>退货失败</p>
+<p>已取消</p>
+<p>结语：</p>
+<p>未经作者允许 请勿转载，谢谢 :)</p>
+</blockquote>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[对于数字类型格式化（js,java,vue）以现金格式为例（保留两位小数）]]></title>
       <url>http://SeeMoonUp.github.io/2017/03/07/java/format/</url>
       <content type="html"><![CDATA[<blockquote>

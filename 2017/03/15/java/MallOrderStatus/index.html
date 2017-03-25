@@ -10,7 +10,7 @@
     
     <title>
         
-            Hello World | 
+            电商订单系统中订单状态有哪些？ | 
         
         lemon blog
     </title>
@@ -48,7 +48,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://SeeMoonUp.github.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Hello World | lemon blog">
+    <meta property="og:title" content="电商订单系统中订单状态有哪些？ | lemon blog">
     <meta property="og:description" content="website java lemon">
 
     <!--[if lte IE 9]>
@@ -226,7 +226,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Quick-Start"><span class="post-toc-number">1.</span> <span class="post-toc-text">Quick Start</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Create-a-new-post"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Create a new post</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Run-server"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Run server</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Generate-static-files"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Generate static files</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Deploy-to-remote-sites"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#目前系统的状态机-不支持购物车"><span class="post-toc-number">1.</span> <span class="post-toc-text">目前系统的状态机(不支持购物车)</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#购物车状态机模型"><span class="post-toc-number"></span> <span class="post-toc-text">购物车状态机模型</span></a>
 
         <!--
         <li class="mdl-menu__item">
@@ -262,7 +262,7 @@
         
     
             <p class="article-headline-p">
-                Hello World
+                电商订单系统中订单状态有哪些？
             </p>
         </div>
 
@@ -281,7 +281,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>lemon</strong>
-        <span>1月 20, 2017</span>
+        <span>3月 15, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -302,7 +302,7 @@
         </button>
         <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
             <li class="mdl-menu__item">在其它设备中阅读本文章</li>
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACbUlEQVR42u3aQW7DMAwEwPz/0+0D0spL0lKMYHwKClvW+CBtSb1+vvp64eHh4eHh4eHhPYz3iq//7l///Y/XL0eYzA0PDw/vJO9iqV0y1lN8fyqZem9ueHh4eOd51SU7Crjxs+v3FuaGh4eH9zBeEp2TEdb34+Hh4X0TrzqtNa96Jx4eHt7TeHks7lGrYf0DtRY8PDy8mFdtgJ38/YH+Hh4eHt6SVz7SVGxTJRNaby2jQ1d4eHh4G3hJ5K2WZZORe62yZEw8PDy8k7xJE6s6ZrVIkW8zeHh4eGd4+cuapdXWcdXksAIeHh7ec3i9kkRSAq4yylEeDw8PbzOvF6Z7xYheqTcpAePh4eGd5BUea5Vl89Ccv3e07+Hh4eHdlDnzsJuXG3qf5oZSCB4eHt5m3r0RuRq+ey2xi40EDw8P7wiv+rJkS0gCdHUriqI8Hh4e3mZetfk0ufLjBfknvjg6gIeHh7eNNzkW0GuV5aXbUaTGw8PD28arNrfmLf98Y6i2zfDw8PDO8/IwXY3avdJwuRWHh4eHt5mXB+I8/vaW+8mRBTw8PLyTvOSqlhiSbWAS6y+iNh4eHt4RXrXNny/uOeaixDAvRuDh4eHdxKu28KuFgyqgGsEL/zHg4eHh3cSbx+tJsO7F6IsZ4uHh4W3mTZbjXkF2gm9Gajw8PLwNvLs2g7w4m0fkZBw8PDy8T/Gqxdl1qSJvlc03Jzw8PLwn8yaY6iGAanEEDw8P78m83tGrKrLHxsPDwzvJKyy+y0msN4/1W5KY3twY8PDw8G7lVQsB+SfIR5uUP/Dw8PBO8r7vwsPDw8PDw8PDe8D1Cy88U+8wHkv1AAAAAElFTkSuQmCC">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC20lEQVR42u3aQW7cMBAEwP3/p5NrLuvtHhLxiiydDEigWDLg9szw9efK64WNjY2NjY2NjY39lexXfP37/LsVkmfe3c3XbPeMjY2NfQP7w5/+4Jl323236Tp+yhWwsbGx72QnoZW8PomTZOV8D1GIYmNjY2Nv3fSsOMHGxsbG3sVu7+aBlJRA2NjY2NgrTaW8udO2otrxwH/tpWFjY2N/PXs26P3dn39tvo2NjY39ZezZlbT+29JiPbQ+vB0bGxv7UHY7uF2Jk/YztS2npV4aNjY29mPZP8NmHyKPurzR3x4DwsbGxr6ZnRygyfErq7VBtRRg2NjY2I9lJ7ExKwNmhziTNtZw9IuNjY19KHtWBiR3f/4cRTOoPNCzIbexsbGxH8jeW0jsPQCUfD5sbGxs7Blp9uSugXEdadjY2NiHstum0jq+HQO0cfV2V9jY2NhHs/MIyRv9yUbzaExGwvVUBBsbG/sIdh4VbWEwG9zOYizaFTY2Nvah7Bkj30Tb0M/f1UYsNjY29tns9WHqrNk0i6i8kYSNjY19AzspFRLG7NhN236a/XqwsbGxz2a3pKQ1n49486Ji1rrCxsbGvoE9KxVmLaQkDpPhcRty2NjY2Dew8wbNrqM2s1FEvgI2Njb2Pey8NZ9/oHyjSTglZdKwAsPGxsY+gr0+GJiNBPIQnTWeigoMGxsb++Hs5B/6fBA7bPeUxcZs3IuNjY19KnsGSFpC+WGaJNLaEcKGQS82Njb2Q9grAbarbbQykCiCFhsbG/tQdnvNyoNZMZOPIpLnsbGxsU9lz4JhZRzbRmA+PPjwXmxsbOyj2W1zJy8Y2hHvSmTWTSVsbGzs49i7Nj0LrfWm0jDAsLGxsa9kzw7utO9dv4uNjY2Nnbfp602MSpe8vbU5wLCxsbEfwl4pNvKttNtNxgCRAhsbG/to9qxlMxu4rnyOdk1sbGzsG9j3XNjY2NjY2NjY2Nhfc/0FruABk7P5ovIAAAAASUVORK5CYII=">
         </ul>
     
 
@@ -314,7 +314,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        
+        <a class="post_tag-link" href="/tags/java/">java</a>
     </ul>
     
 
@@ -330,7 +330,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Hello World&url=http://SeeMoonUp.github.io//2017/01/20/hello-world/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=电商订单系统中订单状态有哪些？&url=http://SeeMoonUp.github.io//2017/03/15/java/MallOrderStatus/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -339,7 +339,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Hello World&url=http://SeeMoonUp.github.io//2017/01/20/hello-world/index.html&via=lemon" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=电商订单系统中订单状态有哪些？&url=http://SeeMoonUp.github.io//2017/03/15/java/MallOrderStatus/index.html&via=lemon" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -348,7 +348,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://SeeMoonUp.github.io//2017/01/20/hello-world/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://SeeMoonUp.github.io//2017/03/15/java/MallOrderStatus/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -357,7 +357,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://SeeMoonUp.github.io//2017/01/20/hello-world/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://SeeMoonUp.github.io//2017/03/15/java/MallOrderStatus/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -381,15 +381,106 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <blockquote>
+<p>场景描述：电商系统开发需要的状态机</p>
+</blockquote>
+<p>从订单状态设计目的和存在价值去分析和理解它背后设计机制：维度及维度颗粒度大小。</p>
+<p>1、正向和逆向流程维度（各选取主要状态）</p>
+<p>正向订单：已锁定、已确认、已付款、已发货、已结算、已完成、已取消等</p>
+<p>正向预售订单：预付款已付未确认、已确认未付尾款（变更）</p>
+<p>正向问题单：未确认、未锁定、未发货、部分付款、未付款等</p>
+<p>逆向退单：待结算、未收到货、未入库、质检不通过、部分收货、已取消、客户已收货等</p>
+<p>逆向换单：完成、已结算、客服已收货等</p>
+<p>2、服务对象维度</p>
+<p>顾客/用户：待付款、待发货、待收货、待评价、买家已付款、交易成功/失败、卖家已发货、退款成功、交易关闭、</p>
+<p>ERP等其他交互系统：已锁定、已确认、已分仓、已分配、已出库、已收货、已完成等</p>
+<p>客服：</p>
+<p>等待买家付款、待付款和待发货订单、退款中的订单、定金已付、买家已付款、</p>
+<p>卖家已发货、交易成功、交易失败、异常订单</p>
+<h4 id="目前系统的状态机-不支持购物车"><a href="#目前系统的状态机-不支持购物车" class="headerlink" title="目前系统的状态机(不支持购物车)"></a>目前系统的状态机(不支持购物车)</h4><p>支付状态</p>
+<blockquote>
+<p>  WAIT_PAY(1,”待支付”),</p>
+<pre><code>PAY_SUCCESS(2, &quot;支付成功&quot;),
+</code></pre></blockquote>
+<p>订单状态</p>
+<blockquote>
+<pre><code>WAIT_REFUND(10, &quot;退款中&quot;),
+
+REFUNDED(11,&quot;退款成功&quot;),
+
+REFUND_ERROR(12,&quot;退款失败&quot;),
+</code></pre></blockquote>
+<p>第三方下单状态</p>
+<blockquote>
+<pre><code>WAIT_CONFIRM(15, &quot;待发货&quot;), //等待确认
+
+CONFIRMED(16, &quot;待发货&quot;),    //已确认
+</code></pre></blockquote>
+<p>状态扭转</p>
+<blockquote>
+<pre><code>WAIT_DELIVER(21,&quot;待发货&quot;),
+
+DELIVERED(22,&quot;已发货&quot;),
+
+RECEIVED(23,&quot;已收货&quot;),
+
+APPLY_RETURN_GOOD(31, &quot;退货中&quot;),
+
+RETURN_PRODUCT_SUCCESS(32, &quot;退货成功&quot;),
+
+CANCEL(41, &quot;已取消&quot;)
+</code></pre></blockquote>
+<p>兼容退货流程（暂不开发）</p>
+<blockquote>
+<p>同意退款流程/等待买家寄回物品</p>
+<p>已寄回待入库/等待卖家签收</p>
+<p>已入库 / 卖家已签收</p>
+<p>退货成功</p>
+</blockquote>
+<h3 id="购物车状态机模型"><a href="#购物车状态机模型" class="headerlink" title="购物车状态机模型"></a>购物车状态机模型</h3><p>A 订单</p>
+<blockquote>
+<p>待付款</p>
+<p>待发货  contain 待发货</p>
+<p>已发货 全部是已发货 已收货 退款 退货</p>
+<p>已收货 全部已收货</p>
+<p>退款中</p>
+<p>退款成功</p>
+<p>退款失败</p>
+<p>退货中</p>
+<p>退货成功</p>
+<p>退货失败</p>
+<p>已取消</p>
+</blockquote>
+<p>B 订单（不存入库状态）</p>
+<blockquote>
+<p>待付款</p>
+<p>待发货（未确认、已确认）</p>
+<p>已发货</p>
+<p>已收货</p>
+<p>退款中</p>
+<p>退款成功</p>
+<p>退款失败</p>
+<p>退货中</p>
+<p>退货成功</p>
+<p>退货失败</p>
+<p>已取消</p>
+</blockquote>
+<p>C 订单</p>
+<blockquote>
+<p>待付款</p>
+<p>待发货（未确认、已确认）</p>
+<p>已发货</p>
+<p>已收货</p>
+<p>退款中</p>
+<p>退款成功</p>
+<p>退款失败</p>
+<p>退货中</p>
+<p>退货成功</p>
+<p>退货失败</p>
+<p>已取消</p>
+<p>结语：</p>
+<p>未经作者允许 请勿转载，谢谢 :)</p>
+</blockquote>
 
     
 
@@ -418,9 +509,9 @@
 <div id="comments">
     <!-- 多说评论框 start -->
     <div class="ds-thread"
-        data-thread-key="2017/01/20/hello-world/"
-        data-url="http://SeeMoonUp.github.io/2017/01/20/hello-world/"
-        data-title="Hello World">
+        data-thread-key="2017/03/15/java/MallOrderStatus/"
+        data-url="http://SeeMoonUp.github.io/2017/03/15/java/MallOrderStatus/"
+        data-title="电商订单系统中订单状态有哪些？">
     </div>
     <!-- 多说评论框 end -->
 </div>
@@ -436,7 +527,7 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/01/20/shipTemplate/" id="post_nav-newer" class="prev-content">
+        <a href="/2017/03/15/java/MallOrderSplit/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -450,7 +541,7 @@
 
     <!-- Next Nav -->
     
-        <a href="/2017/01/20/about/" id="post_nav-older" class="next-content">
+        <a href="/2017/03/07/java/format/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">

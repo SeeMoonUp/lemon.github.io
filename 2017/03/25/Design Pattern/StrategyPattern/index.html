@@ -10,7 +10,7 @@
     
     <title>
         
-            Hello World | 
+            设计模式-策略模式（strategy pattern） | 
         
         lemon blog
     </title>
@@ -48,7 +48,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://SeeMoonUp.github.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Hello World | lemon blog">
+    <meta property="og:title" content="设计模式-策略模式（strategy pattern） | lemon blog">
     <meta property="og:description" content="website java lemon">
 
     <!--[if lte IE 9]>
@@ -226,7 +226,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Quick-Start"><span class="post-toc-number">1.</span> <span class="post-toc-text">Quick Start</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Create-a-new-post"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Create a new post</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Run-server"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Run server</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Generate-static-files"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Generate static files</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Deploy-to-remote-sites"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#需求描述："><span class="post-toc-number">1.</span> <span class="post-toc-text">需求描述：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#普通的设计模式："><span class="post-toc-number">2.</span> <span class="post-toc-text">普通的设计模式：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#修改设计："><span class="post-toc-number">3.</span> <span class="post-toc-text">修改设计：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#升级设计"><span class="post-toc-number">4.</span> <span class="post-toc-text">升级设计</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -262,7 +262,7 @@
         
     
             <p class="article-headline-p">
-                Hello World
+                设计模式-策略模式（strategy pattern）
             </p>
         </div>
 
@@ -281,7 +281,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>lemon</strong>
-        <span>1月 20, 2017</span>
+        <span>3月 25, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -302,7 +302,7 @@
         </button>
         <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
             <li class="mdl-menu__item">在其它设备中阅读本文章</li>
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACbUlEQVR42u3aQW7DMAwEwPz/0+0D0spL0lKMYHwKClvW+CBtSb1+vvp64eHh4eHh4eHhPYz3iq//7l///Y/XL0eYzA0PDw/vJO9iqV0y1lN8fyqZem9ueHh4eOd51SU7Crjxs+v3FuaGh4eH9zBeEp2TEdb34+Hh4X0TrzqtNa96Jx4eHt7TeHks7lGrYf0DtRY8PDy8mFdtgJ38/YH+Hh4eHt6SVz7SVGxTJRNaby2jQ1d4eHh4G3hJ5K2WZZORe62yZEw8PDy8k7xJE6s6ZrVIkW8zeHh4eGd4+cuapdXWcdXksAIeHh7ec3i9kkRSAq4yylEeDw8PbzOvF6Z7xYheqTcpAePh4eGd5BUea5Vl89Ccv3e07+Hh4eHdlDnzsJuXG3qf5oZSCB4eHt5m3r0RuRq+ey2xi40EDw8P7wiv+rJkS0gCdHUriqI8Hh4e3mZetfk0ufLjBfknvjg6gIeHh7eNNzkW0GuV5aXbUaTGw8PD28arNrfmLf98Y6i2zfDw8PDO8/IwXY3avdJwuRWHh4eHt5mXB+I8/vaW+8mRBTw8PLyTvOSqlhiSbWAS6y+iNh4eHt4RXrXNny/uOeaixDAvRuDh4eHdxKu28KuFgyqgGsEL/zHg4eHh3cSbx+tJsO7F6IsZ4uHh4W3mTZbjXkF2gm9Gajw8PLwNvLs2g7w4m0fkZBw8PDy8T/Gqxdl1qSJvlc03Jzw8PLwn8yaY6iGAanEEDw8P78m83tGrKrLHxsPDwzvJKyy+y0msN4/1W5KY3twY8PDw8G7lVQsB+SfIR5uUP/Dw8PBO8r7vwsPDw8PDw8PDe8D1Cy88U+8wHkv1AAAAAElFTkSuQmCC">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC20lEQVR42u3aUW4bMQwEUN//0u0BWsczpNHa0tNX4KyzelogsyL1+HXleGBjY2NjY2NjY2N/JPsRj/z6v9zyyefPfpv8tXYm2NjY2GezX/zr/4M9m0S+QJtFfDpPbGxs7AvYP4fWs2hJ4i1ZxOTuq29hY2NjY5eBkcRSEodJoGJjY2NjzwKsjZaElEcdNjY2NvaqQDOKmTyK8m/9o1oaNjY29sez20bvJ/z8H/rb2NjY2B/J3oyf42e/jWlD68VssbGxsQ9lv/cIzqZxm3y+WlZsbGzsQ9ltPLTBkyxB/nmyKE+vx8bGxj6UvSnctxOdNQbaGFt1RbCxsbG/lt1Oug2StvzUto3f1hXBxsbG/kL25hW/LfS3G5VZESoKMGxsbOyD2O0BnbZx25b+86ZCUkjCxsbGvoHdFpjaqbcTzReibidjY2NjH8rOiztJnMy2FvtiUxJj2NjY2KeyZ7HUtn43m5D9gmJjY2PfwN4cvslL+fVxyaDIhY2NjY29ecWvW61lwyDHr2pp2NjY2F/Ozkv8m/CopzhqNr94JNjY2NgXsNsCUH7jtrmbF7OKRcfGxsa+gN1uNmYbg801bRBiY2Nj38DOX/f3jYE8utq2br0VwcbGxr6Mnbz0t4A8Gmdt4DcEGDY2NvYXsttX/7xBuw+zfDnqAMPGxsb+cnYeA7Omb4tJHkm7TcLGxsa+k50X62eLMjuUsypCYWNjYx/NzktLj3JE0VJeObsvNjY29j3s9uhMW9BP8PkRzNVJJWxsbOwj2O3Y4OuJlqWuF1diY2NjH8puX+7bQ+3FtOL7zu6CjY2NfTY7D61Zwag9uDM76PNiIbCxsbEvYOfhMWvEzjYV72pFYGNjY2Mn7Ly4vylCzcpV2NjY2NibpuzPW468VdAuGTY2NvZt7La5m4dZsnCzK/PNCTY2NvbZ7E2j911x2LYB6keFjY2NfSj7noGNjY2NjY2NjY39MeM3i+MBk94y0mUAAAAASUVORK5CYII=">
         </ul>
     
 
@@ -314,7 +314,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        
+        <a class="post_tag-link" href="/tags/java/">java</a>
     </ul>
     
 
@@ -330,7 +330,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Hello World&url=http://SeeMoonUp.github.io//2017/01/20/hello-world/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=设计模式-策略模式（strategy pattern）&url=http://SeeMoonUp.github.io//2017/03/25/Design Pattern/StrategyPattern/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -339,7 +339,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Hello World&url=http://SeeMoonUp.github.io//2017/01/20/hello-world/index.html&via=lemon" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=设计模式-策略模式（strategy pattern）&url=http://SeeMoonUp.github.io//2017/03/25/Design Pattern/StrategyPattern/index.html&via=lemon" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -348,7 +348,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://SeeMoonUp.github.io//2017/01/20/hello-world/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://SeeMoonUp.github.io//2017/03/25/Design Pattern/StrategyPattern/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -357,7 +357,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://SeeMoonUp.github.io//2017/01/20/hello-world/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://SeeMoonUp.github.io//2017/03/25/Design Pattern/StrategyPattern/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -381,15 +381,42 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h4 id="需求描述："><a href="#需求描述：" class="headerlink" title="需求描述："></a>需求描述：</h4><ol>
+<li>鸭子类（duck）</li>
+<li>多个品种的鸭子（红头鸭，绿毛鸭，玩具鸭）</li>
+<li>多种行为动作（呱呱叫，飞翔，外观展示）</li>
+</ol>
+<p>如何设计呢？</p>
+<h4 id="普通的设计模式："><a href="#普通的设计模式：" class="headerlink" title="普通的设计模式："></a>普通的设计模式：</h4><ol>
+<li><p>duck为父类，定义了呱呱叫 飞翔 外观展示等方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public class Duck &#123;</div><div class="line">    public String guagua()&#123;</div><div class="line">        //呱呱叫</div><div class="line">    &#125;</div><div class="line">    public String fly()&#123;</div><div class="line">        //飞翔</div><div class="line">    &#125;</div><div class="line">    public String display()&#123;</div><div class="line">        //外观展示</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>多个品种的鸭子 设计为子类 继承 duck</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public class RedHeadDuck extend Duck&#123;</div><div class="line">    //覆写父类的外观方法</div><div class="line">    public String display()&#123;</div><div class="line">        //我是红头鸭</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这么设计问题出现了，所有的鸭子都具有了飞翔和呱呱叫的能力，但是玩具鸭并不具有飞翔的能力</p>
+<h4 id="修改设计："><a href="#修改设计：" class="headerlink" title="修改设计："></a>修改设计：</h4><ol>
+<li><p>duck仍为父类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public class Duck &#123;</div><div class="line">    public String guagua()&#123;</div><div class="line">        //呱呱叫</div><div class="line">    &#125;</div><div class="line">    public String display()&#123;</div><div class="line">        //外观展示</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>设计接口 flyBehavior</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public interface FlyBehavior &#123;</div><div class="line">    fly();</div><div class="line">&#125;</div><div class="line">public class FlyDuck extend Duck implements FlyBehavior &#123;</div><div class="line">    public String fly()&#123;</div><div class="line">        //我会飞翔</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">public class ToyDuck extend Duck &#123;</div><div class="line">    public String display() &#123;</div><div class="line">        //我是一个玩具鸭</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>将需要实现飞翔的子类实现接口flyBehavior<br>这样只需要玩具鸭不去实现接口就解决了飞翔的问题</p>
+<p>但是 问题来了 如果说飞翔又分为 借力飞翔 迎风飞翔 等不同的飞翔方式<br>实现接口的子类需要 不同的实现方式，代码更多 而且不能够复用</p>
+<h4 id="升级设计"><a href="#升级设计" class="headerlink" title="升级设计"></a>升级设计</h4><ol>
+<li>duck为父类</li>
+<li>设计接口 flyBehavior</li>
+<li>设计行为类 实现 flyBehavior</li>
+<li>duck 中引用 行为类<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">public class Duck &#123;</div><div class="line">    private FlyBehavior flyBehavior;</div><div class="line">    public setFlyBehavior(FlyBehavior f)&#123;</div><div class="line">        this.flyBehavior = f;</div><div class="line">    &#125;</div><div class="line">    public String fly()&#123;</div><div class="line">        return flyBehavior.fly();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">public class NoFly implements FlyBehavior &#123;</div><div class="line">    public String fly () &#123;</div><div class="line">        //不能飞翔</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">public class CanFly implements FlyBehavior &#123;</div><div class="line">    public String fly () &#123;</div><div class="line">        //可以飞翔</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">//还可以定义多种飞翔方式。。。。</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这样设计就可以很灵活的修改类</p>
+<blockquote>
+<p>结语：策略模式（strategy pattern） 将行为类 即易改变的东西抽取出来 多用组合 少用继承 针对接口编程 不要针对实现编程<br><a href="https://seemoonup.github.io/2017/02/07/java/floatConvertInt/">原文地址</a><br>未经作者允许 请勿转载，谢谢 :)</p>
+</blockquote>
 
     
 
@@ -418,9 +445,9 @@
 <div id="comments">
     <!-- 多说评论框 start -->
     <div class="ds-thread"
-        data-thread-key="2017/01/20/hello-world/"
-        data-url="http://SeeMoonUp.github.io/2017/01/20/hello-world/"
-        data-title="Hello World">
+        data-thread-key="2017/03/25/Design Pattern/StrategyPattern/"
+        data-url="http://SeeMoonUp.github.io/2017/03/25/Design Pattern/StrategyPattern/"
+        data-title="设计模式-策略模式（strategy pattern）">
     </div>
     <!-- 多说评论框 end -->
 </div>
@@ -436,21 +463,13 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/01/20/shipTemplate/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2017/01/20/about/" id="post_nav-older" class="next-content">
+        <a href="/2017/03/21/error&exception/symbol/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">

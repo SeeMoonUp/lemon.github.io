@@ -10,7 +10,7 @@
     
     <title>
         
-            Hello World | 
+            开发中遇到的float double精度问题 | 
         
         lemon blog
     </title>
@@ -48,7 +48,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://SeeMoonUp.github.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Hello World | lemon blog">
+    <meta property="og:title" content="开发中遇到的float double精度问题 | lemon blog">
     <meta property="og:description" content="website java lemon">
 
     <!--[if lte IE 9]>
@@ -226,7 +226,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Quick-Start"><span class="post-toc-number">1.</span> <span class="post-toc-text">Quick Start</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Create-a-new-post"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Create a new post</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Run-server"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Run server</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Generate-static-files"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Generate static files</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Deploy-to-remote-sites"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#描述"><span class="post-toc-number">1.</span> <span class="post-toc-text">描述</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#导致问题的原因"><span class="post-toc-number">2.</span> <span class="post-toc-text">导致问题的原因</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#解决方案"><span class="post-toc-number">3.</span> <span class="post-toc-text">解决方案</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -262,7 +262,7 @@
         
     
             <p class="article-headline-p">
-                Hello World
+                开发中遇到的float double精度问题
             </p>
         </div>
 
@@ -281,7 +281,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>lemon</strong>
-        <span>1月 20, 2017</span>
+        <span>3月 20, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -302,7 +302,7 @@
         </button>
         <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
             <li class="mdl-menu__item">在其它设备中阅读本文章</li>
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACbUlEQVR42u3aQW7DMAwEwPz/0+0D0spL0lKMYHwKClvW+CBtSb1+vvp64eHh4eHh4eHhPYz3iq//7l///Y/XL0eYzA0PDw/vJO9iqV0y1lN8fyqZem9ueHh4eOd51SU7Crjxs+v3FuaGh4eH9zBeEp2TEdb34+Hh4X0TrzqtNa96Jx4eHt7TeHks7lGrYf0DtRY8PDy8mFdtgJ38/YH+Hh4eHt6SVz7SVGxTJRNaby2jQ1d4eHh4G3hJ5K2WZZORe62yZEw8PDy8k7xJE6s6ZrVIkW8zeHh4eGd4+cuapdXWcdXksAIeHh7ec3i9kkRSAq4yylEeDw8PbzOvF6Z7xYheqTcpAePh4eGd5BUea5Vl89Ccv3e07+Hh4eHdlDnzsJuXG3qf5oZSCB4eHt5m3r0RuRq+ey2xi40EDw8P7wiv+rJkS0gCdHUriqI8Hh4e3mZetfk0ufLjBfknvjg6gIeHh7eNNzkW0GuV5aXbUaTGw8PD28arNrfmLf98Y6i2zfDw8PDO8/IwXY3avdJwuRWHh4eHt5mXB+I8/vaW+8mRBTw8PLyTvOSqlhiSbWAS6y+iNh4eHt4RXrXNny/uOeaixDAvRuDh4eHdxKu28KuFgyqgGsEL/zHg4eHh3cSbx+tJsO7F6IsZ4uHh4W3mTZbjXkF2gm9Gajw8PLwNvLs2g7w4m0fkZBw8PDy8T/Gqxdl1qSJvlc03Jzw8PLwn8yaY6iGAanEEDw8P78m83tGrKrLHxsPDwzvJKyy+y0msN4/1W5KY3twY8PDw8G7lVQsB+SfIR5uUP/Dw8PBO8r7vwsPDw8PDw8PDe8D1Cy88U+8wHkv1AAAAAElFTkSuQmCC">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC1UlEQVR42u3aQW7jMBAEQP//05vrAkHkbo4cKGTpZAQyxZIPnZnh69+R1wsbGxsbGxsbGxv7kexXfL1Z9Ns9ybeKTf+32tqesbGxsfdmr5G+P+DHRwZ3Xn/3hj1jY2NjH8C+xuT35FvMY3K+H2xsbGzsdqOTNa9DCxsbGxv7dwIsafckEYiNjY2NfW9TKW/6JFGXBFVe9nywl4aNjY39eHY+NH3O51+db2NjY2M/mL12dObeVlEScvMDQNjY2Ni7svNgaPFr49vJ0988CxsbG3trdt4qakPu+i/X+Hn7CRsbG/sEdt7ibx/WjoTbhlFbumBjY2Pvym4bPW3B0Lal8nIleQo2Njb2CexJYdCOhz/RqBoNerGxsbG3ZieNobyd1AbbWturnm9jY2Njb8Su/60vBwBJTOaFRx512NjY2Oew29jIQ2iychufb348bGxs7E3Za6VF3h5qRwvtyslnbGxs7DPZ8zjJI6ctXdpoxMbGxt6bPUfOxwaTQfINg15sbGzsP85eC4l2TLsYOXGJEsUhNjY29jHsfHzbRld7ZxJsxU6wsbGxN2VPttiOE/JYSoKw/TGwsbGxd2VPDkSOWjxlUZGPhLGxsbHPZE+CJF8nfyn5GDjZMzY2Nvbe7HmzJi9CWkxbLI2O7GBjY2P/WXY7mk3aOm1jKA+h9sfAxsbGPo3dFiRrBy7XIq09ALR4ZAcbGxt7I3YSYEnDqD2UsxZ4twUYNjY29kbstZHq2vCgDb/kRd+W29jY2NiPZ7dXW6JEh2liZDswwMbGxj6BvXZ0cj4wyKNufj82Njb2Cew2tOavKR8PrI2csbGxsc9k3xUe83b/a3Dd3EvDxsbG3pQ92VDeokqaR8WBHmxsbGzswfg2GQm0jPzgETY2NvY57LbRkxcV+crXLyjhfWQ8gI2Njf14dtusaZFrvCTe8uIHGxsbe1f2ORc2NjY2NjY2Njb2Y64vDqkVR4UFoFMAAAAASUVORK5CYII=">
         </ul>
     
 
@@ -314,7 +314,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        
+        <a class="post_tag-link" href="/tags/java/">java</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/javascript/">javascript</a>
     </ul>
     
 
@@ -330,7 +330,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Hello World&url=http://SeeMoonUp.github.io//2017/01/20/hello-world/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=开发中遇到的float double精度问题&url=http://SeeMoonUp.github.io//2017/03/20/java/SingleSignOn/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -339,7 +339,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Hello World&url=http://SeeMoonUp.github.io//2017/01/20/hello-world/index.html&via=lemon" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=开发中遇到的float double精度问题&url=http://SeeMoonUp.github.io//2017/03/20/java/SingleSignOn/index.html&via=lemon" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -348,7 +348,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://SeeMoonUp.github.io//2017/01/20/hello-world/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://SeeMoonUp.github.io//2017/03/20/java/SingleSignOn/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -357,7 +357,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://SeeMoonUp.github.io//2017/01/20/hello-world/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://SeeMoonUp.github.io//2017/03/20/java/SingleSignOn/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -381,15 +381,25 @@
                 <!-- Post Content -->
                 <div id="post-content" class="markdown-Github mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h4 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h4><p>统一登录</p>
+<ol>
+<li>在js中的体现<br> <code>2.32 * 100 = 231.99999999999997</code></li>
+<li>在java中的体现 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">2.32d * 100 = 231.99999999999997</div><div class="line">0.15f * 100 = 15.000001</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>说明：js中使用的为双精度，java 无论单精度或者双精度都无法避免这个问题</p>
+</blockquote>
+<h4 id="导致问题的原因"><a href="#导致问题的原因" class="headerlink" title="导致问题的原因"></a>导致问题的原因</h4><ol>
+<li>关于二进制存储的知识<a href="http://www.cnblogs.com/helloaworld/p/5419017.html" target="_blank" rel="external">点击查看</a></li>
+<li>关于十进制如何转换为二进制<a href="http://blog.csdn.net/xingtanzjr/article/details/50803832" target="_blank" rel="external">点击查看</a></li>
+</ol>
+<p>ps: 第一篇博文中存在一点计算问题 即8.25，用二进制的科学计数法表示为:1.00001*2^3,原文作者少写一个0</p>
+<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><p>对于这个现象 目前没有解决方案，只能根据自己的业务需求，来进行灵活的变通</p>
+<p>作者在进行商城设计的时候遇到的坑<br>后台可以修改订单的价格，所以需要输入一个小数保留两位有效数字即单位为元（因为开发给别人使用所以展示为元更为直观）<br>发现精度问题后，不再考虑工作人员体验问题，修改为int 避免了这个问题<br>数据库中的字段也都存储分为单位 避免精度问题</p>
+<blockquote>
+<p><a href="https://seemoonup.github.io/2017/02/07/java/floatConvertInt/">原文地址</a><br>未经作者允许 请勿转载，谢谢 :)</p>
+</blockquote>
 
     
 
@@ -418,9 +428,9 @@
 <div id="comments">
     <!-- 多说评论框 start -->
     <div class="ds-thread"
-        data-thread-key="2017/01/20/hello-world/"
-        data-url="http://SeeMoonUp.github.io/2017/01/20/hello-world/"
-        data-title="Hello World">
+        data-thread-key="2017/03/20/java/SingleSignOn/"
+        data-url="http://SeeMoonUp.github.io/2017/03/20/java/SingleSignOn/"
+        data-title="开发中遇到的float double精度问题">
     </div>
     <!-- 多说评论框 end -->
 </div>
@@ -436,7 +446,7 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/01/20/shipTemplate/" id="post_nav-newer" class="prev-content">
+        <a href="/2017/03/21/error&exception/symbol/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -450,7 +460,7 @@
 
     <!-- Next Nav -->
     
-        <a href="/2017/01/20/about/" id="post_nav-older" class="next-content">
+        <a href="/2017/03/15/java/MallOrderSplit/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
