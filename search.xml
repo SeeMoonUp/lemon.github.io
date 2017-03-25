@@ -26,7 +26,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public class Duck &#123;</div><div class="line">    public String guagua()&#123;</div><div class="line">        //呱呱叫</div><div class="line">    &#125;</div><div class="line">    public String display()&#123;</div><div class="line">        //外观展示</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>设计接口 flyBehavior</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public interface FlyBehavior &#123;</div><div class="line">    fly();</div><div class="line">&#125;</div><div class="line">public class FlyDuck extend Duck implements FlyBehavior &#123;</div><div class="line">    public String fly()&#123;</div><div class="line">        //我会飞翔</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">public class ToyDuck extend Duck &#123;</div><div class="line">    public String display() &#123;</div><div class="line">        //我是一个玩具鸭</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public interface FlyBehavior &#123;</div><div class="line">    Stirng fly();</div><div class="line">&#125;</div><div class="line">public class FlyDuck extend Duck implements FlyBehavior &#123;</div><div class="line">    public String fly()&#123;</div><div class="line">        //我会飞翔</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">public class ToyDuck extend Duck &#123;</div><div class="line">    public String display() &#123;</div><div class="line">        //我是一个玩具鸭</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>将需要实现飞翔的子类实现接口flyBehavior<br>这样只需要玩具鸭不去实现接口就解决了飞翔的问题</p>
@@ -40,7 +40,7 @@
 </ol>
 <p>这样设计就可以很灵活的修改类</p>
 <blockquote>
-<p>结语：策略模式（strategy pattern） 将行为类 即易改变的东西抽取出来 多用组合 少用继承 针对接口编程 不要针对实现编程<br><a href="https://seemoonup.github.io/2017/02/07/java/floatConvertInt/">原文地址</a><br>未经作者允许 请勿转载，谢谢 :)</p>
+<p>结语：策略模式（strategy pattern）<br>将行为类 即易改变的东西抽取出来<br>多用组合 少用继承<br>针对接口编程 不要针对实现编程<br><a href="https://seemoonup.github.io/2017/03/25/Design%20Pattern/StrategyPattern/">原文地址</a>文章参考《head first 设计模式》<br>未经作者允许 请勿转载，谢谢 :)</p>
 </blockquote>
 ]]></content>
     </entry>
